@@ -1,0 +1,47 @@
+K 25
+svn:wc:ra_dav:version-url
+V 48
+/svn/!svn/ver/29/trunk/friendstracker/res/values
+END
+strings.xml
+K 25
+svn:wc:ra_dav:version-url
+V 60
+/svn/!svn/ver/29/trunk/friendstracker/res/values/strings.xml
+END
+attrs.xml
+K 25
+svn:wc:ra_dav:version-url
+V 57
+/svn/!svn/ver/9/trunk/friendstracker/res/values/attrs.xml
+END
+dimens.xml
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/9/trunk/friendstracker/res/values/dimens.xml
+END
+ids.xml
+K 25
+svn:wc:ra_dav:version-url
+V 55
+/svn/!svn/ver/9/trunk/friendstracker/res/values/ids.xml
+END
+colors.xml
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/9/trunk/friendstracker/res/values/colors.xml
+END
+styles.xml
+K 25
+svn:wc:ra_dav:version-url
+V 58
+/svn/!svn/ver/9/trunk/friendstracker/res/values/styles.xml
+END
+authentification_string.xml
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/!svn/ver/26/trunk/friendstracker/res/values/authentification_string.xml
+END

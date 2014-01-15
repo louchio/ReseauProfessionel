@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="email">E-MAIL </string>
+    <string name="password">Mot de passe </string>
+    <string name="seconnecter">Se connecter</string>
+    <string name="annuler">Annuler</string>
+    
+</resources>
