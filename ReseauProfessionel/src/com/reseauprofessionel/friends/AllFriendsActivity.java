@@ -56,8 +56,8 @@ public class AllFriendsActivity extends DashboardListActivity {
 	HashMap<String, String> amisInfo = new HashMap<String, String>(); 
 
 	// url to get all friends list
-	private static String url_my_friends = "http://10.0.2.2/friendstracker/controller/get_my_friends.php";
-	private static String url_delete_my_friends = "http://10.0.2.2/friendstracker/controller/delete_my_friend.php";
+	private static String url_my_friends = "http://10.0.2.2/reseauprofesionnel/controller/get_my_friends.php";
+	private static String url_delete_my_friends = "http://10.0.2.2/reseauprofesionnel/controller/delete_my_friend.php";
 	// JSON Node names
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_FRIENDS = "friends";

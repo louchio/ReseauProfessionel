@@ -55,7 +55,7 @@ public class LieuxFavorisActivity extends DashboardListActivity {
 	ArrayList<HashMap<String, String>> lieuxArrayList;//la liste finale des lieux
 	
 	//url des lieux favoris
-	private static String url_authentification = "http://10.0.2.2/friendstracker/controller/lieuxfavoris.php";
+	private static String url_authentification = "http://10.0.2.2/reseauprofesionnel/controller/lieuxfavoris.php";
 	// noeud nom dans json
 	//Textes complets 	idLieuxFavoris 	nom 	longitude 	latitude 	Membres_idMembres
 	

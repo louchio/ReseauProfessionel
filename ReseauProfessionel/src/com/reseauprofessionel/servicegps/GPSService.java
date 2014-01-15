@@ -1,6 +1,6 @@
 /* 
  * Copyright (C) 2012
- * Package com.friendstracker.servicegps
+ * Package com.reseauprofesionnel.servicegps
  * Created By KHABALI ANAS
  * 25/05/2012  21:33
  */
@@ -47,7 +47,7 @@ public class GPSService extends Service {
 	
 	private JSONParser jsonParser = new JSONParser();
 	
-	private static final String url_sendMarkers = "http://10.0.2.2/friendstracker/controller/sendMarkers.php";
+	private static final String url_sendMarkers = "http://10.0.2.2/reseauprofesionnel/controller/sendMarkers.php";
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_MESSAGE = "messgae";
 	
