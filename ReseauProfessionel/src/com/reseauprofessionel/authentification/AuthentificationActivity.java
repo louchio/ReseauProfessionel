@@ -29,6 +29,7 @@ import com.reseauprofessionel.profile.Profile;
 
 public class AuthentificationActivity extends DashboardActivity {
 
+	
 	private ProgressDialog pDialog;
 	JSONParser jsonParser = new JSONParser();
 
