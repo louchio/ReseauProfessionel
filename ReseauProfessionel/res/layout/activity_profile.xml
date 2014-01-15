@@ -49,7 +49,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="Votre Profile" />
+        android:text="Votre Profil" />
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -60,11 +60,11 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Nom " />
+            android:text="Nom: " />
 
         <EditText
             android:id="@+id/profileNom"
-            android:layout_width="fill_parent"
+            android:layout_width="247dp"
             android:layout_height="wrap_content" />
     </LinearLayout>
 
@@ -76,7 +76,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Prenom" />
+            android:text="Prenom: " />
 
         <EditText
             android:id="@+id/profilePrenom"
@@ -92,19 +92,32 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Email" />
+            android:text="Email: " />
 
-        <EditText
+        <TextView
             android:id="@+id/profileEmail"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content" />
     </LinearLayout>
 
-    <Button
-        android:id="@+id/Button_EditerProfile"
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Sauvegarder" />
+        android:orientation="horizontal" >
+
+        <Button
+            android:id="@+id/Button_EditerProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Sauvegarder" />
+
+        <Button
+            android:id="@+id/Button_AnnulerEditerProfile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Annuler" />
+    </LinearLayout>
 
 </LinearLayout>

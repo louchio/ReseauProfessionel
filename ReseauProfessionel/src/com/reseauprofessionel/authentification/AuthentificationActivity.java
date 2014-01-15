@@ -136,9 +136,9 @@ public class AuthentificationActivity extends DashboardActivity {
 					JSONArray userArray = json.getJSONArray(TAG_USER);
 					JSONObject user = userArray.getJSONObject(0);
 
-					Profile.prenom = (String) user.get("prenom");
-					Profile.nom = (String) user.get("nom");
-					Profile.email = (String) user.get("email");
+					Profile.creer_profile ((String) user.get("nom"),
+										(String) user.get("prenom"),
+										(String) user.get("email")	 );
 
 					Intent i = new Intent(getApplicationContext(), HomeActivity.class);
 					AuthentificationActivity.idM = user.getString(TAG_IDM);
