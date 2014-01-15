@@ -40,7 +40,7 @@ public class AuthentificationActivity extends DashboardActivity {
 	Button annulerBtn;
 
 	// url pour s'authetifier 
-	private static String url_authentification = "http://10.0.2.2/reseauprofesionnel/controller/authentification.php";
+	private static String url_authentification = "http://10.0.2.2/reseauprofessionnel/controller/authentification.php";
 
 	// noeud nom dans json
 	private static final String TAG_SUCCESS = "success";

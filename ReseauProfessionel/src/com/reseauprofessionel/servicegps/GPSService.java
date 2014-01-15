@@ -47,7 +47,7 @@ public class GPSService extends Service {
 	
 	private JSONParser jsonParser = new JSONParser();
 	
-	private static final String url_sendMarkers = "http://10.0.2.2/reseauprofesionnel/controller/sendMarkers.php";
+	private static final String url_sendMarkers = "http://10.0.2.2/reseauprofessionnel/controller/sendMarkers.php";
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_MESSAGE = "messgae";
 	

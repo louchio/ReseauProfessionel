@@ -29,8 +29,8 @@ public class Inscription extends DashboardActivity {
 	JSONParser jsonParser = new JSONParser();
 	
 	// url to create new membere
-	private static String url_nouveau_membre = "http://10.0.2.2/reseauprofesionnel/controller/Nouveau_Membre.php";
-	private static String url_membre_existe = "http://10.0.2.2/reseauprofesionnel/controller/Membre_existe.php";
+	private static String url_nouveau_membre = "http://10.0.2.2/reseauprofessionnel/controller/Nouveau_Membre.php";
+	private static String url_membre_existe = "http://10.0.2.2/reseauprofessionnel/controller/Membre_existe.php";
 
 	// JSON Node names
 	private static final String TAG_NOM = "nom";
