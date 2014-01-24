@@ -287,7 +287,7 @@ containing a value of this type.
         public static final int search_intro=0x7f040021;
         public static final int seconnecter=0x7f040002;
         public static final int title_about=0x7f040010;
-        public static final int title_favoris=0x7f040016;
+        public static final int title_annonce=0x7f040016;
         public static final int title_friends=0x7f040015;
         public static final int title_home=0x7f040011;
         public static final int title_profile=0x7f040013;
