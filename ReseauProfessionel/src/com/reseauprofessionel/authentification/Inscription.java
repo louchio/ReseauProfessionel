@@ -23,6 +23,7 @@ import com.reseauprofessionel.json.JSONParser;
 
 public class Inscription extends DashboardActivity {
 	
+	
 	// Progress Dialog
 	private ProgressDialog pDialog;
 
