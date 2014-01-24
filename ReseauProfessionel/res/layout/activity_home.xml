@@ -56,11 +56,13 @@
             android:onClick="onClickFeature"
             android:text="@string/title_profile"
             android:drawableTop="@drawable/home_button1"/>
+        
         <Button android:id="@+id/home_btn_feature2"
             style="@style/HomeButton"
             android:onClick="onClickFeature"
             android:text="@string/title_request"
             android:drawableTop="@drawable/home_button2"/>
+        
     </LinearLayout>
 
     <LinearLayout
@@ -78,8 +80,9 @@
         <Button android:id="@+id/home_btn_feature4"
             style="@style/HomeButton"
             android:onClick="onClickFeature"
-            android:text="@string/title_favoris"
+            android:text="@string/title_annonce"
             android:drawableTop="@drawable/home_button4"/>
+        
     </LinearLayout>
 
     <LinearLayout
