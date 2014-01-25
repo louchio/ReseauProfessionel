@@ -46,7 +46,7 @@
             />
       <activity android:name="com.reseauprofessionel.lieuxfavoris.LieuxFavorisActivity"
             android:theme="@style/Theme.D1"
-            android:label="@string/title_favoris"
+            android:label="@string/title_annonce"
             />
       <activity android:name=".F5Activity"
             android:theme="@style/Theme.D1"
