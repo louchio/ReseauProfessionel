@@ -44,11 +44,108 @@
             android:src="@drawable/title_search" />
     </LinearLayout>
 
-    <ListView
+      <!--  <ListView
         android:id="@android:id/list"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="12.03" >
-    </ListView>
+    </ListView>-->
+    
+   <TextView 
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content" 
+			    android:text="Titre de l'annonce"
+			    android:textStyle="bold"
+			    android:textColor="#FF0000"
+			    android:gravity="center"
+			  />
+
+			  <EditText
+			      android:id="@+id/titre_Annonce"
+			      android:layout_width="fill_parent"
+			      android:layout_height="wrap_content"
+			      android:hint="Titre_Annonce"
+			      android:inputType="numberDecimal" />
+			  <TextView 
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content" 
+			    android:text="Texte de l'annonce"
+			    android:textStyle="bold"
+			    android:textColor="#FF0000"
+			    android:gravity="center"
+			  />
+			  
+			  <EditText
+    	    android:id="@+id/texteAnnonce"
+    	    android:layout_width="fill_parent"
+    	    android:layout_height="141dp"
+    	    android:ems="10"
+    	    android:inputType="textMultiLine" >
+
+    	    <requestFocus />
+    	</EditText>
+			  
+		<TextView 
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content" 
+			    android:text="Métier"
+			    android:textStyle="bold"
+			    android:textColor="#FF0000"
+			    android:gravity="center"
+			  />
+			  
+		<Spinner
+        android:id="@+id/spinnerMetier"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:prompt="@string/select_metier" />	  
+		
+		<!--  <TextView 
+			    android:layout_width="fill_parent"
+			    android:layout_height="wrap_content" 
+			    android:text="vous jouer le rôle d’un professionnel ?"
+			    android:textStyle="bold"
+			    android:textColor="#FF0000"
+			    android:gravity="center"
+			  />
+			  
+		<Spinner
+        android:id="@+id/spinnerRoleUser"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:prompt="@string/role_user" >
+    	
+		    <item>Oui</item>
+        	<item>Nom</item>
+		    
+		</Spinner>-->
+		
+		<RadioGroup
+		    android:id="@+id/group"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:checkedButton="@+id/radio2"
+		    android:orientation="horizontal"
+		  >
+		    <RadioButton 
+		      android:id="@+id/radioProfessionnel"
+		      android:layout_width="wrap_content"
+		      android:layout_height="wrap_content"
+		      android:text="Professionnel"
+		    />
+		    <RadioButton 
+		      android:id="@+id/radioNomProfessionnem"
+		      android:layout_width="wrap_content"
+		      android:layout_height="wrap_content"
+		      android:text="Utilisateur"
+		    />
+  		</RadioGroup>
+  		
+		<Button
+    		    android:id="@+id/PublierButton"
+    		    android:layout_width="fill_parent"
+    		    android:layout_height="wrap_content"
+    		    android:layout_gravity="center_horizontal"
+    		    android:text="@string/Publier" />
 
 </LinearLayout>
