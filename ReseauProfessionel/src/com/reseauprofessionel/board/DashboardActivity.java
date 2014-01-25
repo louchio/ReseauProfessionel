@@ -10,6 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.reseauprofessionel.friends.AllFriendsActivity;
+import com.reseauprofessionel.gestAnnonces.GestAnnoncesActivity;
 import com.reseauprofessionel.lieuxfavoris.LieuxFavorisActivity;
 import com.reseauprofessionel.profile.ProfileActivity;
 import com.reseauprofessionel.request.RequestActivity;
@@ -199,7 +200,8 @@ public void onClickFeature (View v)
     	   i = new Intent(getApplicationContext(), AllFriendsActivity.class);
            break;
       case R.id.home_btn_feature4 :
-           i= new Intent(getApplicationContext(), LieuxFavorisActivity.class);
+           //i= new Intent(getApplicationContext(), LieuxFavorisActivity.class);
+    	   i= new Intent(getApplicationContext(), GestAnnoncesActivity.class);
            break;
       case R.id.home_btn_feature5 :
            i = new Intent(getApplicationContext(), F5Activity.class);
