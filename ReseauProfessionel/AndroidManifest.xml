@@ -48,6 +48,10 @@
             android:theme="@style/Theme.D1"
             android:label="@string/title_annonce"
             />
+      <activity android:name="com.reseauprofessionel.gestAnnonces.GestAnnoncesActivity"
+            android:theme="@style/Theme.D1"
+            android:label="@string/title_annonce"
+            />
       <activity android:name=".F5Activity"
             android:theme="@style/Theme.D1"
             android:label="@string/title_you"
