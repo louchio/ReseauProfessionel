@@ -81,10 +81,10 @@ protected void onCreate(Bundle savedInstanceState)
     new listeLieuxFavoris().execute();
 }
 
-
+//Définition une classe interne qui represente la tache asynchrone à exéciter
 public class listeLieuxFavoris extends AsyncTask<String, String, String> {	
 	
-	 // Before starting background thread Show Progress Dialog	 
+	 // La méthode  onPreExecute appelée avant le traitement
 	@Override
 	protected void onPreExecute() {
 		super.onPreExecute();
@@ -97,6 +97,8 @@ public class listeLieuxFavoris extends AsyncTask<String, String, String> {
 	}
 	
 	
+	//Une AsyncTask doit impérativement implémenter la méthode doInBackground. C’est elle qui 
+	//réalisera le traitement de manière asynchrone dans un Thread séparé.
 	@Override
 	protected String doInBackground(String... args) {
 		
@@ -165,6 +167,7 @@ public class listeLieuxFavoris extends AsyncTask<String, String, String> {
 		return null;
 	}
 	
+	//Apres le trailement
 	@Override
 	protected void onPostExecute(String res){
 		// dismiss the dialog after getting all products
