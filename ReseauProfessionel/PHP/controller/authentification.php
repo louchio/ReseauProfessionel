@@ -18,10 +18,15 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
 			$user = array();
 			
 			$user['idUtilisateur'] = $row['idUtilisateur'];
-			$user['email'] = $row['email'];
-			$user['password'] = $row['password'];
 			$user['nom'] = $row['nom'];
 			$user['prenom'] = $row['prenom'];
+			$user['numTel'] = $row['numTel'];
+			$user['adresse'] = $row['adresse'];
+			$user['email'] = $row['email'];
+			$user['estProfessionnel'] = $row['estProfessionnel'];
+			$user['login'] = $row['login'];
+			$user['password'] = $row['password'];
+			$user['idProfession'] = $row['idProfession'];
 			
 			array_push($reponse['user'], $user);
 		}
