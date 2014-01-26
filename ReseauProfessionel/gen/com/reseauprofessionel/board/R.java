@@ -219,7 +219,7 @@ containing a value of this type.
         public static final int espace2=0x7f070021;
         public static final int espace3=0x7f070023;
         public static final int fid=0x7f07002c;
-        public static final int group=0x7f07000b;
+        public static final int groupTypeUser=0x7f07000b;
         public static final int home_btn_feature1=0x7f070011;
         public static final int home_btn_feature2=0x7f070012;
         public static final int home_btn_feature3=0x7f070013;
@@ -230,7 +230,9 @@ containing a value of this type.
         public static final int latitude=0x7f07003f;
         public static final int longitude=0x7f07003d;
         public static final int nom=0x7f070027;
+        public static final int nom_profession=0x7f070042;
         public static final int password=0x7f070020;
+        public static final int pid=0x7f070041;
         public static final int prenom=0x7f070029;
         public static final int profileEmail=0x7f070019;
         public static final int profileNom=0x7f070017;
@@ -266,9 +268,10 @@ containing a value of this type.
         public static final int friendslist_item=0x7f03000d;
         public static final int inscription=0x7f03000e;
         public static final int item_lieuxfavoris=0x7f03000f;
-        public static final int liste_lieuxfavoris=0x7f030010;
-        public static final int main=0x7f030011;
-        public static final int profile=0x7f030012;
+        public static final int item_profession=0x7f030010;
+        public static final int liste_lieuxfavoris=0x7f030011;
+        public static final int main=0x7f030012;
+        public static final int profile=0x7f030013;
     }
     public static final class string {
         public static final int AjouterAnnonce=0x7f04002f;
