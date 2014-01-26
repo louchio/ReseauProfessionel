@@ -46,7 +46,7 @@ public class AuthentificationActivity extends DashboardActivity {
 	// noeud nom dans json
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_USER = "user";
-	private static final String TAG_IDM = "idMembres";
+	private static final String TAG_IDUser = "idUtilisateur";
 
 	private class BtnClickListener implements OnClickListener{
 
@@ -135,13 +135,21 @@ public class AuthentificationActivity extends DashboardActivity {
 					// successfully connected
 					JSONArray userArray = json.getJSONArray(TAG_USER);
 					JSONObject user = userArray.getJSONObject(0);
+					
+					//creer_profile(String nom1, String prenom1, String numTel1,String adresse1, String email1, int estProfessionnel1,String login1, String password1,int idProfession1)
 
-					Profile.creer_profile ((String) user.get("nom"),
+					Profile.creer_profile((String) user.get("nom"),
 										(String) user.get("prenom"),
-										(String) user.get("email")	 );
+										(String) user.get("numTel"),
+										(String) user.get("adresse"),
+										(String) user.get("email"),
+										(String) user.get("estProfessionnel"),
+										(String) user.get("login"),
+										(String) user.get("password"),
+										(String) user.get("idProfession"));
 
 					Intent i = new Intent(getApplicationContext(), HomeActivity.class);
-					AuthentificationActivity.idM = user.getString(TAG_IDM);
+					AuthentificationActivity.idUser = user.getString(TAG_IDUser);
 					pDialog.dismiss();
 					startActivity(i);
 					//i.putExtra(TAG_IDM, user.getString(TAG_IDM));
