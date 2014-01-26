@@ -2,9 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
-    <LinearLayout style="@style/TitleBar" >
+    <LinearLayout style="@style/TitleBar">
 
         <ImageView
             style="@style/TitleBarSeparator"
@@ -18,7 +18,7 @@
         android:layout_height="fill_parent"
         android:stretchColumns="1" >
 
-        <TableRow>
+    	<TableRow>
 
             <TextView
                 android:layout_width="0dp"
@@ -31,6 +31,27 @@
                 android:textSize="10pt" />
         </TableRow>
 
+    	<RadioGroup
+		    android:id="@+id/ETgroupSexe"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:checkedButton="@+id/ETradioHomme"
+		    android:orientation="horizontal"
+		  >
+		    <RadioButton 
+		      android:id="@+id/ETradioHomme"
+		      android:layout_width="wrap_content"
+		      android:layout_height="wrap_content"
+		      android:text="@string/Homme"
+		    />
+		    <RadioButton 
+		      android:id="@+id/ETradioFemme"
+		      android:layout_width="wrap_content"
+		      android:layout_height="wrap_content"
+		      android:text="@string/Femme"
+		    />
+  		</RadioGroup>
+  		
         <TableRow>
 
             <TextView
@@ -113,6 +134,64 @@
                 android:padding="5dp" />
         </TableRow>
 
+  		<TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="@string/Ville" />
+
+            <EditText
+                android:id="@+id/ETVille"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="text"
+                android:padding="5dp" />
+
+        </TableRow>
+    
+  		<TableRow>
+  		    <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="@string/Telephone" />
+  		    
+	  		<EditText
+    		    android:id="@+id/editText1"
+    		    android:layout_width="wrap_content"
+    		    android:layout_height="wrap_content"
+    		    android:ems="10"
+    		    android:inputType="phone" >
+
+    		    <requestFocus />
+    		</EditText>
+        </TableRow>
+                    
+        <RadioGroup
+		    android:id="@+id/ETgroupIsProf"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:checkedButton="@+id/ETradioNonProfessionnel"
+		    android:orientation="horizontal"
+		  >
+            
+		    <RadioButton 
+		      android:id="@+id/ETradioNonProfessionnel"
+		      android:layout_width="wrap_content"
+		      android:layout_height="wrap_content"
+		      android:text="@string/Utilisateur"
+		    />
+		    <RadioButton 
+		      android:id="@+id/ETradioProfessionnel"
+		      android:layout_width="wrap_content"
+		      android:layout_height="wrap_content"
+		      android:text="@string/Professionnel"
+		    />
+  		</RadioGroup>
+ 				
         <View
             android:layout_height="2dip"
             android:background="#FF909090" />
@@ -139,6 +218,7 @@
                 android:padding="5dp"
                 android:text="@string/annuler" />
         </LinearLayout>
+        
     </TableLayout>
 
 </LinearLayout>

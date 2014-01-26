@@ -51,9 +51,15 @@
     <string name="about_intro">This app is a social network that allow you to track your friends whit there authorization evry where in the world</string>
     <string name="search_intro">Content for the Search page goes here.</string>
     <string name="Confirmer">Confirmer</string>
+    <string name="Homme">Homme</string>
+	<string name="Femme">Femme</string>
     <string name="Nom">Nom</string>
     <string name="Prenom">Prénom</string>
     <string name="Email">Email</string>
+   	<string name="Telephone">Téléphone</string>
+   	<string name="Ville">Ville</string>
+	<string name="Professionnel">Professionnel</string>
+	<string name="Utilisateur">Utilisateur</string>
     <string name="Sinscrire">S\'inscrire</string>
     <string name="ImageDescription">Une image</string>
     <string name="Inscription">Inscription</string>
@@ -61,4 +67,5 @@
 	<string name="select_metier">Metiers</string>
 	<string name="role_user">Role</string>
 	<string name="Publier">Publier</string>
+
 </resources>
