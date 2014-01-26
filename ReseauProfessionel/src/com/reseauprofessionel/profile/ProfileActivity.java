@@ -177,7 +177,7 @@ public class ProfileActivity extends DashboardActivity
 
 			// Building Parameters
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
-			params.add(new BasicNameValuePair(TAG_IDM, AuthentificationActivity.idM));
+			params.add(new BasicNameValuePair(TAG_IDM, AuthentificationActivity.idUser));
 			params.add(new BasicNameValuePair(TAG_NOM, Nom));
 			params.add(new BasicNameValuePair(TAG_PRENOM, Prenom));
 
