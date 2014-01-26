@@ -27,8 +27,8 @@ import com.reseauprofessionel.request.RequestActivity;
 public abstract class DashboardActivity extends Activity 
 {
 
-	protected static  String idM = null;
-	private static final String TAG_ID = "idMembres";
+	protected static  String idUser= null;
+	private static final String TAG_ID = "idUtilisateur";
 /**
  * onCreate - called when the activity is first created.
  *
@@ -213,7 +213,7 @@ public void onClickFeature (View v)
     	   break;
     }
     if(i != null) {
-    	i.putExtra(TAG_ID, idM);
+    	i.putExtra(TAG_ID, idUser);
     	startActivityForResult(i, 100);
     }
 }
