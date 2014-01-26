@@ -1,11 +1,11 @@
--- phpMyAdmin SQL Dump
--- version 3.4.9
+		-- phpMyAdmin SQL Dump
+-- version 3.5.8.1
 -- http://www.phpmyadmin.net
 --
--- Client: localhost
--- Généré le : Mar 22 Mai 2012 à 15:27
--- Version du serveur: 5.5.20
--- Version de PHP: 5.3.9
+-- Client: 127.0.0.1
+-- Généré le: Dim 26 Janvier 2014 à 10:49
+-- Version du serveur: 5.6.10
+-- Version de PHP: 5.4.14
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,7 +17,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données: `reseauprofesionnel`
+-- Base de données: `reseauprofessionnel`
 --
 
 -- --------------------------------------------------------
@@ -40,6 +40,29 @@ CREATE TABLE IF NOT EXISTS `amis` (
 INSERT INTO `amis` (`idAmis`, `Membres_idMembres`) VALUES
 (2, 1),
 (3, 1);
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `annonce`
+--
+
+CREATE TABLE IF NOT EXISTS `annonce` (
+  `idannonce` int(11) NOT NULL AUTO_INCREMENT,
+  `titreAnnonce` varchar(45) DEFAULT NULL,
+  `textAnnonce` varchar(45) DEFAULT NULL,
+  `idUtilisateur` int(11) NOT NULL,
+  PRIMARY KEY (`idannonce`),
+  UNIQUE KEY `idannonce_UNIQUE` (`idannonce`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+
+--
+-- Contenu de la table `annonce`
+--
+
+INSERT INTO `annonce` (`idannonce`, `titreAnnonce`, `textAnnonce`, `idUtilisateur`) VALUES
+(1, 'location du  materiel', 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbssssbbb', 1),
+(2, 'location de voiture', 'jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj', 1);
 
 -- --------------------------------------------------------
 
@@ -95,52 +118,58 @@ CREATE TABLE IF NOT EXISTS `markers` (
 --
 
 CREATE TABLE IF NOT EXISTS `membres` (
-  `idMembres` int(11) NOT NULL AUTO_INCREMENT,
-  `email` varchar(45) DEFAULT NULL,
-  `password` varchar(45) DEFAULT NULL,
+  `idUtilisateur` int(11) NOT NULL AUTO_INCREMENT,
   `nom` varchar(10) DEFAULT NULL,
   `prenom` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`idMembres`)
+  `numTel` varchar(45) DEFAULT NULL,
+  `adresse` varchar(45) DEFAULT NULL,
+  `email` varchar(45) DEFAULT NULL,
+  `estProfessionnel` varchar(45) DEFAULT NULL,
+  `login` varchar(45) DEFAULT NULL,
+  `password` varchar(45) DEFAULT NULL,
+  `idProfession` int(11) NOT NULL,
+  PRIMARY KEY (`idUtilisateur`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
 
 --
 -- Contenu de la table `membres`
 --
 
-INSERT INTO `membres` (`idMembres`, `email`, `password`, `nom`, `prenom`) VALUES
-(1, 'anas@gmail.com', 'anas', 'khabali', 'anas'),
-(2, 'hassan@yahoo.fr', 'hassan', 'elouardi', 'hassan'),
-(3, 'adil@gmail.com', 'adil', 'elyamouni', 'adil'),
-(4, 'naziha@gmail.com', 'naziha', 'laaz', 'naziha');
+INSERT INTO `membres` (`idUtilisateur`, `nom`, `prenom`, `numTel`, `adresse`, `email`, `estProfessionnel`, `login`, `password`, `idProfession`) VALUES
+(1, 'khabali', 'anas', '0111', 'marseille', 'anas@gmail.com', '1', 'anassLog', 'anas', 1),
+(2, 'elouardi', 'hassan', NULL, NULL, 'hassan@yahoo.fr', '0', 'hassanLog', 'hassan', 2),
+(3, 'elyamouni', 'adil', NULL, NULL, 'adil@gmail.com', '1', 'adilLog', 'adil', 2),
+(4, 'laaz', 'naziha', NULL, NULL, 'naziha@gmail.com', '1', 'nazihaLog', 'naziha', 1);
+
+-- --------------------------------------------------------
 
 --
--- Contraintes pour les tables exportées
+-- Structure de la table `profession`
 --
 
---
--- Contraintes pour la table `amis`
---
-ALTER TABLE `amis`
-  ADD CONSTRAINT `amis_ibfk_1` FOREIGN KEY (`Membres_idMembres`) REFERENCES `membres` (`idMembres`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `amis_ibfk_2` FOREIGN KEY (`idAmis`) REFERENCES `membres` (`idMembres`) ON DELETE CASCADE ON UPDATE CASCADE;
+CREATE TABLE IF NOT EXISTS `profession` (
+  `idprofession` int(11) NOT NULL AUTO_INCREMENT,
+  `nom` varchar(45) DEFAULT NULL,
+  PRIMARY KEY (`idprofession`),
+  UNIQUE KEY `idprofession_UNIQUE` (`idprofession`)
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
--- Contraintes pour la table `demandes`
+-- Contenu de la table `profession`
 --
-ALTER TABLE `demandes`
-  ADD CONSTRAINT `demandes_ibfk_1` FOREIGN KEY (`Membres_idMembres`) REFERENCES `membres` (`idMembres`) ON DELETE CASCADE ON UPDATE CASCADE;
 
---
--- Contraintes pour la table `lieuxfavoris`
---
-ALTER TABLE `lieuxfavoris`
-  ADD CONSTRAINT `lieuxfavoris_ibfk_1` FOREIGN KEY (`Membres_idMembres`) REFERENCES `membres` (`idMembres`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Contraintes pour la table `markers`
---
-ALTER TABLE `markers`
-  ADD CONSTRAINT `markers_ibfk_1` FOREIGN KEY (`Membres_idMembres`) REFERENCES `membres` (`idMembres`) ON DELETE CASCADE ON UPDATE CASCADE;
+INSERT INTO `profession` (`idprofession`, `nom`) VALUES
+(1, 'Ambulancier'),
+(2, 'Assistant de service social'),
+(3, 'Avocat'),
+(4, 'Boulanger'),
+(5, 'Chauffagiste'),
+(6, 'Climaticien'),
+(7, 'Electricien'),
+(8, 'Mecanicien'),
+(9, 'Medecin'),
+(10, 'Plombier'),
+(11, 'Reparateur automobile');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
