@@ -30,10 +30,10 @@ protected void onCreate(Bundle savedInstanceState)
     super.onCreate(savedInstanceState);
     setContentView(R.layout.activity_home);
 
-    trace(HomeActivity.idM); // debug récupération de id du membre connecté voire LogCat Tag Demo
+    trace(HomeActivity.idUser); // debug récupération de id du membre connecté voire LogCat Tag Demo
     
     Intent service = new Intent(getApplicationContext(), GPSService.class);
-    GPSService.setId(idM);
+    GPSService.setId(idUser);
     startService(service);
 }
     
