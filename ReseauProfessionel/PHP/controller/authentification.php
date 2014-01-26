@@ -17,7 +17,7 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
 			
 			$user = array();
 			
-			$user['idMembres'] = $row['idMembres'];
+			$user['idUtilisateur'] = $row['idUtilisateur'];
 			$user['email'] = $row['email'];
 			$user['password'] = $row['password'];
 			$user['nom'] = $row['nom'];
