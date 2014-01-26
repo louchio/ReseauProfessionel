@@ -16,6 +16,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.RadioGroup;
 
 import com.reseauprofessionel.board.DashboardActivity;
 import com.reseauprofessionel.board.R;
@@ -38,6 +39,8 @@ public class Inscription extends DashboardActivity {
 	private static final String TAG_PRENOM = "prenom";
 	private static final String TAG_EMAIL = "email";
 	private static final String TAG_PASSWORD = "password";
+	private static final String TAG_VILLE = "ville";
+	private static final String TAG_ISPROF = "isProf";
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_MESSAGE = "message";
 	
@@ -46,6 +49,8 @@ public class Inscription extends DashboardActivity {
 	EditText ETEmail ;
 	EditText ETPassword ;
 	EditText ETPasswordC ;
+	EditText ETVille ;
+	RadioGroup ETIsProf;
 	Button   SinscrireButton ;
 	Button   AnnulerButton ;
 	
@@ -53,7 +58,9 @@ public class Inscription extends DashboardActivity {
 	private String Prenom 		= null ; 
 	private String Email 		= null ; 
 	private String Password 	= null ; 
-	private String PasswordC 	= null ; 
+	private String PasswordC 	= null ;
+	private String Ville	 	= null ;
+	private String IsProf	 	= null ;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +72,8 @@ public class Inscription extends DashboardActivity {
 		ETEmail 	= (EditText) findViewById(R.id.ETEmail) ;
 		ETPassword 	= (EditText) findViewById(R.id.ETPassword) ;
 		ETPasswordC = (EditText) findViewById(R.id.ETPasswordC) ;
+		ETVille 	= (EditText) findViewById(R.id.ETVille) ;
+		ETIsProf	= (RadioGroup) findViewById(R.id.ETgroupIsProf) ;
 		
 		SinscrireButton = (Button) findViewById(R.id.SinscrireButton);
 		AnnulerButton   = (Button) findViewById(R.id.AnnulerButton);
@@ -90,8 +99,12 @@ public class Inscription extends DashboardActivity {
 		
 	}
 	private void Initialiser() {
-		ETNom.setText(""); ETPrenom.setText("");ETEmail.setText("");
-		ETPassword.setText("");ETPasswordC.setText("");
+		ETNom.setText("")		;
+		ETPrenom.setText("")	;
+		ETEmail.setText("")		;
+		ETPassword.setText("")	;
+		ETPasswordC.setText("")	;
+		ETVille.setText("")	;
 	}
 
 	private void RecupererLesChamps() {

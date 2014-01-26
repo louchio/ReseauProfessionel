@@ -192,6 +192,7 @@ containing a value of this type.
         public static final int ETPasswordC=0x7f070034;
         public static final int ETPrenom=0x7f070031;
         public static final int ETSearch=0x7f07001c;
+        public static final int ETTelephone=0x7f070036;
         public static final int ETVille=0x7f070035;
         public static final int ETgroupIsProf=0x7f070037;
         public static final int ETgroupSexe=0x7f07002d;
@@ -213,7 +214,6 @@ containing a value of this type.
         public static final int dialog_discard_confirm=0x7f070003;
         public static final int dialog_moderator=0x7f070004;
         public static final int dialog_wave=0x7f070005;
-        public static final int editText1=0x7f070036;
         public static final int email=0x7f07001e;
         public static final int espace1=0x7f07001f;
         public static final int espace2=0x7f070021;
