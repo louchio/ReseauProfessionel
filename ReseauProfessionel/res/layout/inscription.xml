@@ -4,211 +4,229 @@
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
-    <ImageView
-        style="@style/TitleBarSeparator"
-        android:contentDescription="@string/Inscription" />
+    <ScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
 
-    <TextView style="@style/TitleBarText" />
+        <LinearLayout
+            android:layout_width="321dp"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <ImageView
+                style="@style/TitleBarSeparator"
+                android:contentDescription="@string/Inscription" />
+
+            <TextView style="@style/TitleBarText" />
+
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="74.50"
+                android:shrinkColumns="1"
+                android:stretchColumns="1" >
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:text="@string/Inscription"
+                        android:textColor="#AAEEFF"
+                        android:textSize="10pt" />
+                </TableRow>
+
+                <TableRow>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:text="Civilité*" />
+                    </LinearLayout>
+
+                    <Spinner
+                        android:id="@+id/ETgroupSexe"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+                    
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
+
+                    <TextView
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="0dp"
+                        android:text="@string/Nom" />
+
+                    <EditText
+                        android:id="@+id/ETNom"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="0"
+                        android:inputType="text"
+                        android:padding="0dp" />
+                    
+
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@string/Prenom" />
+
+                    <EditText
+                        android:id="@+id/ETPrenom"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:padding="5dp" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@string/Email" />
+
+                    <EditText
+                        android:id="@+id/ETEmail"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textEmailAddress"
+                        android:padding="5dp" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@string/password" />
+
+                    <EditText
+                        android:id="@+id/ETPassword"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:padding="5dp" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@string/Confirmer" />
+
+                    <EditText
+                        android:id="@+id/ETPasswordC"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="textPassword"
+                        android:padding="5dp" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@string/Ville" />
+
+                    <EditText
+                        android:id="@+id/ETVille"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="text"
+                        android:padding="5dp" />
+                </TableRow>
+
+                <TableRow>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="5dp"
+                        android:text="@string/Telephone" />
+
+                    <EditText
+                        android:id="@+id/ETTelephone"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:ems="10"
+                        android:inputType="phone" />
+                </TableRow>
+
+                <TableRow>
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:padding="5dp"
+                            android:text="Etes vous un professionnel ?" />
+                    </LinearLayout>
+
+                    <Spinner
+                        android:id="@+id/ETgroupIsProf"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+                </TableRow>
+
+                <View
+                    android:layout_height="2dip"
+                    android:background="#FF909090" />
+
+                <TableRow>
+
+                    <Button
+                        android:id="@+id/SinscrireButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:text="@string/Sinscrire" />
+
+                    <Button
+                        android:id="@+id/AnnulerButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:text="@string/annuler" />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+
+    </ScrollView>
 
     <!-- xmlns:android="http://schemas.android.com/apk/res/android" -->
-
-    <TableLayout
-        android:layout_width="338dp"
-        android:layout_height="wrap_content"
-        android:stretchColumns="1" >
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:padding="10dp"
-                android:text="@string/Inscription"
-                android:textColor="#AAEEFF"
-                android:textSize="10pt" />
-        </TableRow>
-
-        <RadioGroup
-            android:id="@+id/ETgroupSexe"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checkedButton="@+id/ETradioHomme"
-            android:orientation="horizontal" >
-
-            <RadioButton
-                android:id="@+id/ETradioHomme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Homme" />
-
-            <RadioButton
-                android:id="@+id/ETradioFemme"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Femme" />
-        </RadioGroup>
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="@string/Nom" />
-
-            <EditText
-                android:id="@+id/ETNom"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="text"
-                android:padding="5dp" />
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="@string/Prenom" />
-
-            <EditText
-                android:id="@+id/ETPrenom"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="text"
-                android:padding="5dp" />
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="@string/Email" />
-
-            <EditText
-                android:id="@+id/ETEmail"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:padding="5dp" />
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="@string/password" />
-
-            <EditText
-                android:id="@+id/ETPassword"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:padding="5dp" />
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="@string/Confirmer" />
-
-            <EditText
-                android:id="@+id/ETPasswordC"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:inputType="textPassword"
-                android:padding="5dp" />
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="@string/Ville" />
-
-            <EditText
-                android:id="@+id/ETVille"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="text"
-                android:padding="5dp" />
-        </TableRow>
-
-        <TableRow>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:padding="5dp"
-                android:text="@string/Telephone" />
-
-            <EditText
-                android:id="@+id/ETTelephone"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ems="10"
-                android:inputType="phone" >
-
-                <requestFocus />
-            </EditText>
-        </TableRow>
-
-        <RadioGroup
-            android:id="@+id/ETgroupIsProf"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:checkedButton="@+id/ETradioNonProfessionnel"
-            android:orientation="horizontal" >
-
-            <RadioButton
-                android:id="@+id/ETradioNonProfessionnel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Utilisateur" />
-
-            <RadioButton
-                android:id="@+id/ETradioProfessionnel"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/Professionnel" />
-        </RadioGroup>
-
-        <View
-            android:layout_height="2dip"
-            android:background="#FF909090" />
-
-        <TableRow>
-
-            <Button
-                android:id="@+id/SinscrireButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:text="@string/Sinscrire" />
-
-            <Button
-                android:id="@+id/AnnulerButton"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="5dp"
-                android:text="@string/annuler" />
-        </TableRow>
-    </TableLayout>
 
 </LinearLayout>
