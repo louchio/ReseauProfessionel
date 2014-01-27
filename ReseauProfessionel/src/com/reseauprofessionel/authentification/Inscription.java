@@ -35,49 +35,57 @@ public class Inscription extends DashboardActivity {
 	private static String url_membre_existe = "http://10.0.2.2/reseauprofessionnel/controller/Membre_existe.php";
 
 	// JSON Node names
+	private static final String TAG_SEXE = "sexe";
 	private static final String TAG_NOM = "nom";
 	private static final String TAG_PRENOM = "prenom";
 	private static final String TAG_EMAIL = "email";
 	private static final String TAG_PASSWORD = "password";
+	private static final String TAG_TELEPHONE = "telephone";
 	private static final String TAG_VILLE = "ville";
 	private static final String TAG_ISPROF = "isProf";
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_MESSAGE = "message";
 	
+	RadioGroup ETSexe;
 	EditText ETNom ;
 	EditText ETPrenom ;
 	EditText ETEmail ;
 	EditText ETPassword ;
 	EditText ETPasswordC ;
+	EditText ETTelephone ;
 	EditText ETVille ;
 	RadioGroup ETIsProf;
 	Button   SinscrireButton ;
 	Button   AnnulerButton ;
 	
-	private String Nom 			= null ; 
-	private String Prenom 		= null ; 
-	private String Email 		= null ; 
-	private String Password 	= null ; 
-	private String PasswordC 	= null ;
-	private String Ville	 	= null ;
-	private String IsProf	 	= null ;
+	private String 	Sexe		= null ;
+	private String 	Nom			= null ; 
+	private String 	Prenom 		= null ; 
+	private String 	Email 		= null ; 
+	private String 	Password 	= null ; 
+	private String 	PasswordC 	= null ;
+	private String 	Telephone 	= null ;
+	private String 	Ville	 	= null ;
+	private String	IsProf	 	= null ;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.inscription);
 		
+		ETSexe		= (RadioGroup) findViewById(R.id.ETgroupSexe) ;
 		ETNom 		= (EditText) findViewById(R.id.ETNom) ;
 		ETPrenom 	= (EditText) findViewById(R.id.ETPrenom) ;
 		ETEmail 	= (EditText) findViewById(R.id.ETEmail) ;
 		ETPassword 	= (EditText) findViewById(R.id.ETPassword) ;
 		ETPasswordC = (EditText) findViewById(R.id.ETPasswordC) ;
+		ETVille 	= (EditText) findViewById(R.id.ETTelephone) ;
 		ETVille 	= (EditText) findViewById(R.id.ETVille) ;
 		ETIsProf	= (RadioGroup) findViewById(R.id.ETgroupIsProf) ;
-		
+
 		SinscrireButton = (Button) findViewById(R.id.SinscrireButton);
 		AnnulerButton   = (Button) findViewById(R.id.AnnulerButton);
-		
+	
 		SinscrireButton.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -99,20 +107,32 @@ public class Inscription extends DashboardActivity {
 		
 	}
 	private void Initialiser() {
+		ETSexe.check(R.id.ETradioHomme);
 		ETNom.setText("")		;
 		ETPrenom.setText("")	;
 		ETEmail.setText("")		;
 		ETPassword.setText("")	;
 		ETPasswordC.setText("")	;
+		ETTelephone.setText("")	;
 		ETVille.setText("")	;
+		ETIsProf.check(R.id.ETradioNonProfessionnel);
 	}
 
 	private void RecupererLesChamps() {
-		Nom 		= ETNom.getText().toString(); 
-		Prenom 		= ETPrenom.getText().toString() ;
+		// Recuperer le bouton du sexe selectionné
+		if(ETSexe.getCheckedRadioButtonId() == R.id.ETradioHomme) Sexe = "Homme" ;
+		else Sexe = "Femme" ;
+		// TODO
+		System.out.println("aaaaaaaaaaa"+Sexe);
+		Nom 		= ETNom.getText().toString();
+		Prenom 		= ETPrenom.getText().toString();
 		Email 		= ETEmail.getText().toString();
 		Password 	= ETPassword.getText().toString();
 		PasswordC 	= ETPasswordC.getText().toString();
+		Telephone 	= ETTelephone.getText().toString();
+		Ville 		= ETVille.getText().toString();
+		if(ETIsProf.getCheckedRadioButtonId() == R.id.ETradioProfessionnel) IsProf = "true" ;
+		else IsProf = "false" ;
 	}
 	
 	boolean  SaisieIsValidated() {
@@ -176,10 +196,14 @@ public class Inscription extends DashboardActivity {
 
 			// Building Parameters
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
+			params.add(new BasicNameValuePair(TAG_SEXE, Sexe));
 			params.add(new BasicNameValuePair(TAG_NOM, Nom));
 			params.add(new BasicNameValuePair(TAG_PRENOM, Prenom));
 			params.add(new BasicNameValuePair(TAG_EMAIL, Email));
 			params.add(new BasicNameValuePair(TAG_PASSWORD, Password));
+			params.add(new BasicNameValuePair(TAG_TELEPHONE, Telephone));
+			params.add(new BasicNameValuePair(TAG_VILLE, Ville));
+			params.add(new BasicNameValuePair(TAG_ISPROF, IsProf));
 
 			// getting JSON Object
 			// Note that create membre url accepts POST method
