@@ -16,18 +16,19 @@
 
             <ImageView
                 style="@style/TitleBarSeparator"
+                android:layout_width="wrap_content"
                 android:contentDescription="@string/Inscription" />
 
             <TextView style="@style/TitleBarText" />
 
-            <TableLayout
+            <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="74.50"
-                android:shrinkColumns="1"
-                android:stretchColumns="1" >
+                android:orientation="vertical" >
 
-                <TableRow>
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
 
                     <TextView
                         android:layout_width="0dp"
@@ -40,17 +41,20 @@
                         android:textSize="10pt" />
                 </TableRow>
 
-                <TableRow>
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" >
 
                         <TextView
-                            android:layout_width="wrap_content"
+                            android:layout_width="70dp"
                             android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
                             android:padding="5dp"
-                            android:text="Civilité*" />
+                            android:text="Civilité" />
                     </LinearLayout>
 
                     <Spinner
@@ -58,7 +62,6 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
-                    
                 </TableRow>
 
                 <TableRow
@@ -66,8 +69,9 @@
                     android:layout_height="fill_parent" >
 
                     <TextView
-                        android:layout_width="fill_parent"
+                        android:layout_width="70dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginRight="60dp"
                         android:padding="0dp"
                         android:text="@string/Nom" />
 
@@ -77,110 +81,153 @@
                         android:layout_height="wrap_content"
                         android:ems="0"
                         android:inputType="text"
-                        android:padding="0dp" />
-                    
+                        android:padding="0dp" >
 
+                        <requestFocus />
+                    </EditText>
                 </TableRow>
 
-                <TableRow>
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
+                        android:layout_width="70dp"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="60dp"
+                        android:padding="0dp"
                         android:text="@string/Prenom" />
 
                     <EditText
                         android:id="@+id/ETPrenom"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:ems="10"
+                        android:ems="0"
                         android:inputType="text"
-                        android:padding="5dp" />
+                        android:padding="0dp" >
+
+                        <requestFocus />
+                    </EditText>
                 </TableRow>
 
-                <TableRow>
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
+                        android:layout_width="70dp"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="60dp"
+                        android:padding="0dp"
                         android:text="@string/Email" />
 
                     <EditText
                         android:id="@+id/ETEmail"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textEmailAddress"
-                        android:padding="5dp" />
+                        android:ems="0"
+                        android:inputType="text"
+                        android:padding="0dp" >
+
+                        <requestFocus />
+                    </EditText>
                 </TableRow>
 
-                <TableRow>
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
-                        android:text="@string/password" />
+                        android:layout_width="70dp"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="60dp"
+                        android:padding="0dp"
+                        android:text="Password" />
 
                     <EditText
                         android:id="@+id/ETPassword"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textPassword"
-                        android:padding="5dp" />
+                        android:ems="0"
+                        android:inputType="text"
+                        android:padding="0dp" >
+
+                        <requestFocus />
+                    </EditText>
                 </TableRow>
 
-                <TableRow>
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
+                        android:layout_width="70dp"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="60dp"
+                        android:padding="0dp"
                         android:text="@string/Confirmer" />
 
                     <EditText
                         android:id="@+id/ETPasswordC"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="textPassword"
-                        android:padding="5dp" />
+                        android:ems="0"
+                        android:inputType="text"
+                        android:padding="0dp" >
+
+                        <requestFocus />
+                    </EditText>
                 </TableRow>
 
-                <TableRow>
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
+                        android:layout_width="70dp"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="60dp"
+                        android:padding="0dp"
                         android:text="@string/Ville" />
 
                     <EditText
                         android:id="@+id/ETVille"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:ems="10"
+                        android:ems="0"
                         android:inputType="text"
-                        android:padding="5dp" />
+                        android:padding="0dp" >
+
+                        <requestFocus />
+                    </EditText>
                 </TableRow>
 
-                <TableRow>
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
 
                     <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:padding="5dp"
+                        android:layout_width="70dp"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="60dp"
+                        android:padding="0dp"
                         android:text="@string/Telephone" />
 
                     <EditText
                         android:id="@+id/ETTelephone"
-                        android:layout_width="wrap_content"
+                        android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
-                        android:ems="10"
-                        android:inputType="phone" />
+                        android:ems="0"
+                        android:inputType="phone"
+                        android:padding="0dp" >
+
+                        <requestFocus />
+                    </EditText>
                 </TableRow>
 
-                <TableRow>
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
 
                     <LinearLayout
                         android:layout_width="wrap_content"
@@ -189,6 +236,7 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
                             android:padding="5dp"
                             android:text="Etes vous un professionnel ?" />
                     </LinearLayout>
@@ -200,31 +248,39 @@
                         android:layout_weight="1" />
                 </TableRow>
 
+                 <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
+                <Button
+                    android:id="@+id/SinscrireButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="@string/Sinscrire" />
+
+                <Button
+                    android:id="@+id/AnnulerButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="5dp"
+                    android:text="@string/annuler" />
+                </TableRow>
+            </LinearLayout>
+
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="74.50"
+                android:shrinkColumns="1"
+                android:stretchColumns="1" >
+
                 <View
                     android:layout_height="2dip"
                     android:background="#FF909090" />
-
-                <TableRow>
-
-                    <Button
-                        android:id="@+id/SinscrireButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="5dp"
-                        android:text="@string/Sinscrire" />
-
-                    <Button
-                        android:id="@+id/AnnulerButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"
-                        android:padding="5dp"
-                        android:text="@string/annuler" />
-                </TableRow>
             </TableLayout>
         </LinearLayout>
-
     </ScrollView>
 
     <!-- xmlns:android="http://schemas.android.com/apk/res/android" -->

@@ -14,9 +14,11 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
+import android.widget.Spinner;
 
 import com.reseauprofessionel.board.DashboardActivity;
 import com.reseauprofessionel.board.R;
@@ -67,13 +69,15 @@ public class Inscription extends DashboardActivity {
 	private String 	Telephone 	= null ;
 	private String 	Ville	 	= null ;
 	private String	IsProf	 	= null ;
+	Spinner	 SpinnerCivilite ;
+	Spinner	 SpinnerProf ;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.inscription);
 		
-		ETSexe		= (RadioGroup) findViewById(R.id.ETgroupSexe) ;
+		//ETSexe		= (Spinner) findViewById(R.id.ETgroupSexe) ;
 		ETNom 		= (EditText) findViewById(R.id.ETNom) ;
 		ETPrenom 	= (EditText) findViewById(R.id.ETPrenom) ;
 		ETEmail 	= (EditText) findViewById(R.id.ETEmail) ;
@@ -81,10 +85,27 @@ public class Inscription extends DashboardActivity {
 		ETPasswordC = (EditText) findViewById(R.id.ETPasswordC) ;
 		ETVille 	= (EditText) findViewById(R.id.ETTelephone) ;
 		ETVille 	= (EditText) findViewById(R.id.ETVille) ;
-		ETIsProf	= (RadioGroup) findViewById(R.id.ETgroupIsProf) ;
+		//ETIsProf	= (RadioGroup) findViewById(R.id.ETgroupIsProf) ;
 
 		SinscrireButton = (Button) findViewById(R.id.SinscrireButton);
 		AnnulerButton   = (Button) findViewById(R.id.AnnulerButton);
+		
+		SpinnerCivilite = (Spinner) findViewById(R.id.ETgroupSexe);
+		SpinnerProf = (Spinner) findViewById(R.id.ETgroupIsProf);
+		
+		List Civilite = new ArrayList();
+		Civilite.add("Monsieur");
+		Civilite.add("Madame");
+		ArrayAdapter dataAdapterCivilite = new ArrayAdapter(this,android.R.layout.simple_spinner_item, Civilite);
+		dataAdapterCivilite.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		SpinnerCivilite.setAdapter(dataAdapterCivilite);
+		
+		List Prof = new ArrayList();
+		Prof.add("Oui");
+		Prof.add("Non");
+		ArrayAdapter dataAdapterProf = new ArrayAdapter(this,android.R.layout.simple_spinner_item, Prof);
+		dataAdapterProf.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		SpinnerProf.setAdapter(dataAdapterProf);
 	
 		SinscrireButton.setOnClickListener(new View.OnClickListener() {
 			
@@ -107,7 +128,7 @@ public class Inscription extends DashboardActivity {
 		
 	}
 	private void Initialiser() {
-		ETSexe.check(R.id.ETradioHomme);
+		//ETSexe.check(R.id.ETradioHomme);
 		ETNom.setText("")		;
 		ETPrenom.setText("")	;
 		ETEmail.setText("")		;
@@ -115,13 +136,13 @@ public class Inscription extends DashboardActivity {
 		ETPasswordC.setText("")	;
 		ETTelephone.setText("")	;
 		ETVille.setText("")	;
-		ETIsProf.check(R.id.ETradioNonProfessionnel);
+		//ETIsProf.check(R.id.ETradioNonProfessionnel);
 	}
 
 	private void RecupererLesChamps() {
 		// Recuperer le bouton du sexe selectionné
-		if(ETSexe.getCheckedRadioButtonId() == R.id.ETradioHomme) Sexe = "Homme" ;
-		else Sexe = "Femme" ;
+		//if(ETSexe.getCheckedRadioButtonId() == R.id.ETradioHomme) Sexe = "Homme" ;
+		//else Sexe = "Femme" ;
 		// TODO
 		System.out.println("aaaaaaaaaaa"+Sexe);
 		Nom 		= ETNom.getText().toString();
@@ -131,8 +152,8 @@ public class Inscription extends DashboardActivity {
 		PasswordC 	= ETPasswordC.getText().toString();
 		Telephone 	= ETTelephone.getText().toString();
 		Ville 		= ETVille.getText().toString();
-		if(ETIsProf.getCheckedRadioButtonId() == R.id.ETradioProfessionnel) IsProf = "true" ;
-		else IsProf = "false" ;
+		//if(ETIsProf.getCheckedRadioButtonId() == R.id.ETradioProfessionnel) IsProf = "true" ;
+		//else IsProf = "false" ;
 	}
 	
 	boolean  SaisieIsValidated() {
