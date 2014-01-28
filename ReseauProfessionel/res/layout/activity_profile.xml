@@ -1,104 +1,161 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!--
-    Copyright 2011 Wglxy.com
-
-    Licensed under the Apache License, Version 2.0 (the "License");
-    you may not use this file except in compliance with the License.
-    You may obtain a copy of the License at
-
-         http://www.apache.org/licenses/LICENSE-2.0
-
-    Unless required by applicable law or agreed to in writing, software
-    distributed under the License is distributed on an "AS IS" BASIS,
-    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-    See the License for the specific language governing permissions and
-    limitations under the License.
--->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
-    <LinearLayout style="@style/TitleBar" >
-
-        <ImageButton
-            style="@style/TitleBarAction"
-            android:contentDescription="@string/description_home"
-            android:onClick="onClickHome"
-            android:src="@drawable/title_home" />
-
-        <ImageView style="@style/TitleBarSeparator" />
-
-        <TextView style="@style/TitleBarText" />
-
-        <ImageButton
-            style="@style/TitleBarAction"
-            android:contentDescription="@string/description_about"
-            android:onClick="onClickAbout"
-            android:src="@drawable/title_about" />
-
-        <ImageButton
-            style="@style/TitleBarAction"
-            android:contentDescription="@string/description_search"
-            android:onClick="onClickSearch"
-            android:src="@drawable/title_search" />
-    </LinearLayout>
-
-    <TextView
+    <ScrollView
+        android:id="@+id/scrollView1"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="Votre Profil" />
+        android:layout_height="wrap_content" >
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
-
-        <TextView
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="321dp"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="Nom: " />
+            android:orientation="vertical" >
 
-        <EditText
-            android:id="@+id/profileNom"
-            android:layout_width="247dp"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+            <ImageView
+                style="@style/TitleBarSeparator"
+                android:layout_width="wrap_content"
+                android:contentDescription="@string/Inscription" />
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+            <TextView style="@style/TitleBarText" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Prenom: " />
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" >
 
-        <EditText
-            android:id="@+id/profilePrenom"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
 
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:padding="10dp"
+                        android:text="@string/Inscription"
+                        android:textColor="#AAEEFF"
+                        android:textSize="10pt" />
+                </TableRow>
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email: " />
+               
 
-        <TextView
-            android:id="@+id/profileEmail"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+                
+
+                
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="60dp"
+                        android:padding="0dp"
+                        android:text="Password" />
+
+                    <EditText
+                        android:id="@+id/ETPassword"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="0"
+                        android:inputType="text"
+                        android:padding="0dp" >
+                    </EditText>
+                </TableRow>
+
+                
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:layout_width="70dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="60dp"
+                            android:padding="5dp"
+                            android:text="Arrondissement" />
+                    </LinearLayout>
+
+                    <Spinner
+                        android:id="@+id/ETgroupArrondissement"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
+
+                    <TextView
+                        android:layout_width="70dp"
+                        android:layout_height="20dp"
+                        android:layout_marginRight="60dp"
+                        android:padding="0dp"
+                        android:text="@string/Telephone" />
+
+                    <EditText
+                        android:id="@+id/ETTelephone"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:ems="0"
+                        android:inputType="phone"
+                        android:padding="0dp" >
+                    </EditText>
+                </TableRow>
+
+                <TableRow
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="20dp"
+                            android:padding="5dp"
+                            android:text="Etes vous un professionnel ?" />
+                    </LinearLayout>
+
+                    <Spinner
+                        android:id="@+id/ETgroupIsProf"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+                </TableRow>
+
+                
+            </LinearLayout>
+
+            <TableLayout
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="74.50"
+                android:shrinkColumns="1"
+                android:stretchColumns="1" >
+
+                <View
+                    android:layout_height="2dip"
+                    android:background="#FF909090" />
+            </TableLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- xmlns:android="http://schemas.android.com/apk/res/android" -->
+
 
     <LinearLayout
         android:layout_width="fill_parent"
