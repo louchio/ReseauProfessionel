@@ -52,7 +52,7 @@
                         <TextView
                             android:layout_width="70dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="20dp"
+                            android:layout_marginRight="60dp"
                             android:padding="5dp"
                             android:text="Civilité" />
                     </LinearLayout>
@@ -105,8 +105,6 @@
                         android:ems="0"
                         android:inputType="text"
                         android:padding="0dp" >
-
-                        <requestFocus />
                     </EditText>
                 </TableRow>
 
@@ -128,8 +126,6 @@
                         android:ems="0"
                         android:inputType="text"
                         android:padding="0dp" >
-
-                        <requestFocus />
                     </EditText>
                 </TableRow>
 
@@ -151,8 +147,6 @@
                         android:ems="0"
                         android:inputType="text"
                         android:padding="0dp" >
-
-                        <requestFocus />
                     </EditText>
                 </TableRow>
 
@@ -174,8 +168,6 @@
                         android:ems="0"
                         android:inputType="text"
                         android:padding="0dp" >
-
-                        <requestFocus />
                     </EditText>
                 </TableRow>
 
@@ -197,8 +189,6 @@
                         android:ems="0"
                         android:inputType="text"
                         android:padding="0dp" >
-
-                        <requestFocus />
                     </EditText>
                 </TableRow>
 
@@ -220,8 +210,6 @@
                         android:ems="0"
                         android:inputType="phone"
                         android:padding="0dp" >
-
-                        <requestFocus />
                     </EditText>
                 </TableRow>
 
@@ -248,24 +236,25 @@
                         android:layout_weight="1" />
                 </TableRow>
 
-                 <TableRow
+                <TableRow
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent" >
-                <Button
-                    android:id="@+id/SinscrireButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="5dp"
-                    android:text="@string/Sinscrire" />
 
-                <Button
-                    android:id="@+id/AnnulerButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="5dp"
-                    android:text="@string/annuler" />
+                    <Button
+                        android:id="@+id/SinscrireButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:text="@string/Sinscrire" />
+
+                    <Button
+                        android:id="@+id/AnnulerButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:padding="5dp"
+                        android:text="@string/annuler" />
                 </TableRow>
             </LinearLayout>
 
