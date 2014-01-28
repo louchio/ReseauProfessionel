@@ -17,7 +17,7 @@
 <resources>
     <string name="hello">Choose one of the features below.</string>
 
-    <string name="app_name">FriendsTracker</string>
+    <string name="app_name">RéseauProfessionnel</string>
     <string name="description_logo">Trace your friends evry where</string>
 
     <string name="description_about">About</string>
