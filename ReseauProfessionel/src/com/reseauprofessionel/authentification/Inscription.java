@@ -70,6 +70,7 @@ public class Inscription extends DashboardActivity {
 	private String 	Ville	 	= null ;
 	private String	IsProf	 	= null ;
 	Spinner	 SpinnerCivilite ;
+	Spinner	 SpinnerArrondissement ;
 	Spinner	 SpinnerProf ;
 	
 	@Override
@@ -83,14 +84,15 @@ public class Inscription extends DashboardActivity {
 		ETEmail 	= (EditText) findViewById(R.id.ETEmail) ;
 		ETPassword 	= (EditText) findViewById(R.id.ETPassword) ;
 		ETPasswordC = (EditText) findViewById(R.id.ETPasswordC) ;
-		ETVille 	= (EditText) findViewById(R.id.ETTelephone) ;
-		ETVille 	= (EditText) findViewById(R.id.ETVille) ;
+		ETTelephone	= (EditText) findViewById(R.id.ETTelephone) ;
+		//ETVille 	= (EditText) findViewById(R.id.ETVille) ;
 		//ETIsProf	= (RadioGroup) findViewById(R.id.ETgroupIsProf) ;
 
 		SinscrireButton = (Button) findViewById(R.id.SinscrireButton);
 		AnnulerButton   = (Button) findViewById(R.id.AnnulerButton);
 		
 		SpinnerCivilite = (Spinner) findViewById(R.id.ETgroupSexe);
+		SpinnerProf = (Spinner) findViewById(R.id.ETgroupArrondissement);
 		SpinnerProf = (Spinner) findViewById(R.id.ETgroupIsProf);
 		
 		List Civilite = new ArrayList();
@@ -99,6 +101,14 @@ public class Inscription extends DashboardActivity {
 		ArrayAdapter dataAdapterCivilite = new ArrayAdapter(this,android.R.layout.simple_spinner_item, Civilite);
 		dataAdapterCivilite.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		SpinnerCivilite.setAdapter(dataAdapterCivilite);
+		
+		List Arrondissement = new ArrayList();
+		Civilite.add("1er");
+		Civilite.add("2ième");
+		Civilite.add("3ième");
+		ArrayAdapter dataAdapterArrondissement = new ArrayAdapter(this,android.R.layout.simple_spinner_item, Arrondissement);
+		dataAdapterCivilite.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		SpinnerArrondissement.setAdapter(dataAdapterArrondissement);
 		
 		List Prof = new ArrayList();
 		Prof.add("Oui");
