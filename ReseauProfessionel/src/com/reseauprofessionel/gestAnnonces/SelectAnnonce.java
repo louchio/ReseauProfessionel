@@ -62,7 +62,7 @@ import com.reseauprofessionel.profile.Profile;
  *
  */
 
-public class GestAnnoncesActivity extends DashboardActivity { //DashboardListActivity
+public class SelectAnnonce extends DashboardActivity { //DashboardListActivity
 
 	private ProgressDialog pDialog;
 	JSONParser jParser = new JSONParser();
@@ -74,7 +74,8 @@ public class GestAnnoncesActivity extends DashboardActivity { //DashboardListAct
 	
 	//url des lieux favoris
 	private static String url_authentification = "http://10.0.2.2/reseauprofessionnel/controller/get_professions.php";
-	private static String url_nouvelle_annonce = "http://10.0.2.2/reseauprofessionnel/controller/Nouvelle_Annonce.php";
+	private static String url_modifier_annonce = "http://10.0.2.2/reseauprofessionnel/controller/MAJ_annonce.php";
+	private static String url_supprimer_annonce = "http://10.0.2.2/reseauprofessionnel/controller/Delete_annonce.php";
 	// noeud nom dans json
 	//Textes complets 	idLieuxFavoris 	nom 	longitude 	latitude 	Membres_idMembres
 	
@@ -84,7 +85,7 @@ public class GestAnnoncesActivity extends DashboardActivity { //DashboardListAct
 	private static final String TAG_NOM = "nom";
 	private static final String TAG_TITREANNONCE = "titreAnnonce";
 	private static final String TAG_TexteAnnonce = "texteAnnonce";
-	private static final String TAG_IDUTILISATEUR = "idUtilisateur";
+	private static final String TAG_IDANNONCE = "idannonce";
 	private static final String TAG_DESTINATION = "destination";
 	
 	private String id = null; 
@@ -92,7 +93,7 @@ public class GestAnnoncesActivity extends DashboardActivity { //DashboardListAct
 	EditText ETTitreAnnonce ;
 	EditText ETTextAnnonce ;
 	Spinner SpinnerProf;
-	Button PublierButton;
+	Button ModofierButton;
 	RadioGroup groupRadioUser;
 	
 	private String TitreAnnonce = null ; 
@@ -101,30 +102,32 @@ public class GestAnnoncesActivity extends DashboardActivity { //DashboardListAct
 	private String idProfession = null;
 	private String destination = null;
 	
+	public static String idannonce = null;
+	public static String idannonceSuprim = null;
 	
 	
 @Override
 protected void onCreate(Bundle savedInstanceState) 
 {
     super.onCreate(savedInstanceState);
-    setContentView (R.layout.activity_ajtannonce);
+    setContentView (R.layout.activity_selectannonce);
     //setTitleFromActivityLabel (R.id.title_text);
     professionsArrayList = new ArrayList<HashMap<String,String>>();
     
-    spinnerProf = (Spinner) findViewById(R.id.spinnerMetier);
-    PublierButton = (Button) findViewById(R.id.PublierButton);
-    groupRadioUser = (RadioGroup) findViewById(R.id.groupTypeUser);
+    spinnerProf = (Spinner) findViewById(R.id.spinnerMetierS);
+    ModofierButton = (Button) findViewById(R.id.ModifierButtonS);
+    groupRadioUser = (RadioGroup) findViewById(R.id.groupTypeUserS);
     
     initialisation();
     
-    PublierButton.setOnClickListener(new View.OnClickListener() {
+    ModofierButton.setOnClickListener(new View.OnClickListener() {
 		
 		@Override
 		public void onClick(View v) {
 			
 			Log.d("yowwwww", "yess");
 			RecupererLesChamps();
-			new NouvelleAnnonce().execute(); 
+			new ModificationAnnonce().execute(); 
 		}
 	}) ;
     
@@ -136,18 +139,18 @@ protected void onCreate(Bundle savedInstanceState)
 }
 
 public void initialisation(){
-	ETTitreAnnonce		= (EditText) findViewById(R.id.titre_Annonce) ;
-	ETTextAnnonce 	= (EditText) findViewById(R.id.texteAnnonce) ;
+	ETTitreAnnonce		= (EditText) findViewById(R.id.titre_AnnonceS) ;
+	ETTitreAnnonce.setText (ListAllAnnoceParProf.titreannonce);
+	ETTextAnnonce 	= (EditText) findViewById(R.id.texteAnnonceS) ;
+	ETTextAnnonce.setText(ListAllAnnoceParProf.texteannonce);
 }
 
 private void RecupererLesChamps() {
 	TitreAnnonce 		= ETTitreAnnonce.getText().toString(); 
 	TexteAnnonce 		= ETTextAnnonce.getText().toString() ;
-	idUtilisateur = GestAnnoncesActivity.idUser;
+	idannonce = ListAllAnnoceParProf.idannonce;
 	
-	//idProfession = 	spinnerProf.getSelectedItem().
-	
-	//System.out.println("titre annonce :"+TitreAnnonce+",  Texte Annonce : "+TexteAnnonce+" , IdUser = "+idUtilisateur);
+	Log.i("saaaaaaaaaww", "titre annonce :"+TitreAnnonce+",  Texte Annonce : "+TexteAnnonce+" , Idannonce = "+idannonce);
 }
 
 public class MonSpinner1Listener implements OnItemSelectedListener {
@@ -166,7 +169,7 @@ public class MonSpinner1Listener implements OnItemSelectedListener {
 
 //Définition de la classe NouvelleAnnonce pour ajoute une Annonce
 
-class NouvelleAnnonce extends AsyncTask<String, String, String> {
+class ModificationAnnonce extends AsyncTask<String, String, String> {
 
 	/**
 	 * Before starting background thread Show Progress Dialog
@@ -174,7 +177,7 @@ class NouvelleAnnonce extends AsyncTask<String, String, String> {
 	@Override
 	protected void onPreExecute() {
 		super.onPreExecute();
-		pDialog = new ProgressDialog(GestAnnoncesActivity.this);
+		pDialog = new ProgressDialog(SelectAnnonce.this);
 		pDialog.setMessage("Chargement ...");
 		pDialog.setIndeterminate(false);
 		pDialog.setCancelable(true);
@@ -194,15 +197,17 @@ class NouvelleAnnonce extends AsyncTask<String, String, String> {
 		
 		params.add(new BasicNameValuePair(TAG_TITREANNONCE, TitreAnnonce));
 		params.add(new BasicNameValuePair(TAG_TexteAnnonce, TexteAnnonce));
-		params.add(new BasicNameValuePair(TAG_IDUTILISATEUR, GestAnnoncesActivity.idUser));
+		params.add(new BasicNameValuePair(TAG_IDANNONCE,idannonce));
 		params.add(new BasicNameValuePair(TAG_IDPROFESSION, idProfession));
-		params.add(new BasicNameValuePair(TAG_DESTINATION, destination));
+		Log.i("saaaaaaaaaww", "titre annonce :"+TitreAnnonce+",  Texte Annonce : "+TexteAnnonce+" , Idannonce = "+idannonce+" idprofession = "+idProfession);
+		// ##############" destiniation ###################################
+		//params.add(new BasicNameValuePair(TAG_DESTINATION, destination));
 		
 		
 
 		// getting JSON Object
 		// Note that create membre url accepts POST method
-		JSONObject json = jsonParser.makeHttpRequest(url_nouvelle_annonce,"POST", params);
+		JSONObject json = jsonParser.makeHttpRequest(url_modifier_annonce,"POST", params);
 		
 		// check log cat fro response
 		Log.d("Create Response", json.toString());
@@ -212,7 +217,67 @@ class NouvelleAnnonce extends AsyncTask<String, String, String> {
 			int success = json.getInt(TAG_SUCCESS);
 			if (success == 1) {
 				// successfully created member
-				Intent i = new Intent(getApplicationContext(), GestAnnoncesActivity.class);
+				Intent i = new Intent(getApplicationContext(), ListAllAnnoceParProf.class);
+				startActivity(i);
+				finish();
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	/**
+	 * After completing background task Dismiss the progress dialog
+	 * **/
+	protected void onPostExecute(String file_url) {
+		// dismiss the dialog once done
+		pDialog.dismiss();
+	}
+}
+
+class SupprimerAnnonce extends AsyncTask<String, String, String> {
+
+	/**
+	 * Before starting background thread Show Progress Dialog
+	 * */
+	@Override
+	protected void onPreExecute() {
+		super.onPreExecute();
+		pDialog = new ProgressDialog(SelectAnnonce.this);
+		pDialog.setMessage("Chargement ...");
+		pDialog.setIndeterminate(false);
+		pDialog.setCancelable(true);
+		pDialog.show();
+	}
+
+	/**
+	 * Creation du membre
+	 * */
+	protected String doInBackground(String... args) {
+
+		// Building Parameters
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		params.add(new BasicNameValuePair(TAG_IDANNONCE,idannonceSuprim));
+		Log.i("SUPRESSIONNNN","  Idannonce Supprimer = "+idannonce);
+		// ##############" destiniation ###################################
+		//params.add(new BasicNameValuePair(TAG_DESTINATION, destination));
+		
+	
+		// getting JSON Object
+		// Note that create membre url accepts POST method
+		JSONObject json = jsonParser.makeHttpRequest(url_supprimer_annonce,"POST", params);
+		
+		// check log cat fro response
+		Log.d("Create Response", json.toString());
+
+		// check for success tag
+		try {
+			int success = json.getInt(TAG_SUCCESS);
+			if (success == 1) {
+				// successfully created member
+				Intent i = new Intent(getApplicationContext(), ListAllAnnoceParProf.class);
 				startActivity(i);
 				finish();
 			}
@@ -240,7 +305,7 @@ public class listeProfessions extends AsyncTask<String, String, String> {
 	protected void onPreExecute() {
 		super.onPreExecute();
 		
-		pDialog = new ProgressDialog(GestAnnoncesActivity.this);
+		pDialog = new ProgressDialog(SelectAnnonce.this);
 		pDialog.setMessage("Loading Data Please waite ...");
 		pDialog.setIndeterminate(false);
 		pDialog.setCancelable(false);
@@ -328,7 +393,7 @@ public class listeProfessions extends AsyncTask<String, String, String> {
 								
 								
 								SpinnerAdapter adapter = new SimpleAdapter(
-										GestAnnoncesActivity.this, 
+										SelectAnnonce.this, 
 										
 										professionsArrayList,
 										
@@ -345,5 +410,12 @@ public class listeProfessions extends AsyncTask<String, String, String> {
 					}
 }
 }
+
+	public void onClickDelete (View v)
+	{
+	   // super.onClickDelete(v);	
+	    idannonceSuprim =idannonce; 
+	    new SupprimerAnnonce().execute();
+	}
 }
  // end class
