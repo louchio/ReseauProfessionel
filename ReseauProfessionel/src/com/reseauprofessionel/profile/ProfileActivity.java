@@ -30,6 +30,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -108,7 +109,40 @@ public class ProfileActivity extends DashboardActivity
 
 		editerButton  = (Button) findViewById(R.id.Button_EditerProfile);
 		annulerButton = (Button) findViewById(R.id.Button_AnnulerEditerProfile);
+		
+		List<String> Arrondissement = new ArrayList<String>();
+		Arrondissement.add("1er arrondissement");
+		Arrondissement.add("2ème arrondissement");
+		Arrondissement.add("3ème arrondissement");
+		Arrondissement.add("4ème arrondissement");
+		Arrondissement.add("5ème arrondissement");
+		Arrondissement.add("6ème arrondissement");
+		Arrondissement.add("7ème arrondissement");
+		Arrondissement.add("8ème arrondissement");
+		Arrondissement.add("9ème arrondissement");
+		Arrondissement.add("10ème arrondissement");
+		Arrondissement.add("11ème arrondissement");
+		Arrondissement.add("12ème arrondissement");
+		Arrondissement.add("13ème arrondissement");
+		Arrondissement.add("14ème arrondissement");
+		Arrondissement.add("15ème arrondissement");
+		Arrondissement.add("16ème arrondissement");
+		Arrondissement.add("17ème arrondissement");
+		Arrondissement.add("18ème arrondissement");
+		Arrondissement.add("19ème arrondissement");
+		Arrondissement.add("20ème arrondissement");
+		
+		ArrayAdapter<String> dataAdapterArrondissement = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, Arrondissement);
+		dataAdapterArrondissement.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		pArrondissement.setAdapter(dataAdapterArrondissement);
 
+		List<String> Prof = new ArrayList<String>();
+		Prof.add("Oui");
+		Prof.add("Non");
+		ArrayAdapter<String> dataAdapterProf = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, Prof);
+		dataAdapterProf.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		pProf.setAdapter(dataAdapterProf);
+		
 		ReInitialiser();
 
 		editerButton.setOnClickListener(new View.OnClickListener() {

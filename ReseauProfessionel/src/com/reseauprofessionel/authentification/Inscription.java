@@ -76,7 +76,7 @@ public class Inscription extends DashboardActivity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.inscription);
 		
-		ETCivilite		= (Spinner) findViewById(R.id.ETgroupSexe) ;
+		ETCivilite	= (Spinner) findViewById(R.id.ETgroupSexe) ;
 		ETNom 		= (EditText) findViewById(R.id.ETNom) ;
 		ETPrenom 	= (EditText) findViewById(R.id.ETPrenom) ;
 		ETEmail 	= (EditText) findViewById(R.id.ETEmail) ;
@@ -121,7 +121,7 @@ public class Inscription extends DashboardActivity {
 		
 
 		ArrayAdapter<String> dataAdapterArrondissement = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, Arrondissement);
-		dataAdapterCivilite.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		dataAdapterArrondissement.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		ETArr.setAdapter(dataAdapterArrondissement);
 		
 		List<String> Prof = new ArrayList<String>();
