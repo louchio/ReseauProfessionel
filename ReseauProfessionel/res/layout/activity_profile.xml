@@ -59,7 +59,7 @@
                         android:text="Password" />
 
                     <EditText
-                        android:id="@+id/ETPassword"
+                        android:id="@+id/profilePassword"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:ems="0"
@@ -87,7 +87,7 @@
                     </LinearLayout>
 
                     <Spinner
-                        android:id="@+id/ETgroupArrondissement"
+                        android:id="@+id/profileArrondissement"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
@@ -105,7 +105,7 @@
                         android:text="@string/Telephone" />
 
                     <EditText
-                        android:id="@+id/ETTelephone"
+                        android:id="@+id/profileTelephone"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:ems="0"
@@ -131,7 +131,7 @@
                     </LinearLayout>
 
                     <Spinner
-                        android:id="@+id/ETgroupIsProf"
+                        android:id="@+id/profilegroupIsProf"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />

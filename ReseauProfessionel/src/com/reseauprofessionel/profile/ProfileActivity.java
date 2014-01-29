@@ -32,6 +32,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.reseauprofessionel.authentification.AuthentificationActivity;
@@ -67,9 +68,10 @@ public class ProfileActivity extends DashboardActivity
 	private static final String TAG_SUCCESS = "success";
 	// private static final String TAG_MESSAGE = "message";
 
-	EditText pNom ;
-	EditText pPrenom ;
-	TextView pEmail ;
+	EditText pPassword ;
+	Spinner pArrondissement ;
+	TextView pTelephone ;
+	Spinner pProf ;
 
 	Button   editerButton ;
 	Button   annulerButton ;
@@ -77,7 +79,8 @@ public class ProfileActivity extends DashboardActivity
 	private String Nom 			= null ; 
 	private String Prenom 		= null ; 
 	private String Email 		= null ; 
-	//private String Password 	= null ; 
+	private String Password 	= null ; 
+	private String Telephone	= null ;
 	//private String PasswordC 	= null ; 
 
 	/**
@@ -98,9 +101,10 @@ public class ProfileActivity extends DashboardActivity
 		super.onCreate(savedInstanceState);
 		setContentView (R.layout.activity_profile);
 
-		pNom 		  = (EditText) findViewById(R.id.profileNom) ;
-		pPrenom 	  = (EditText) findViewById(R.id.profilePrenom) ;
-		pEmail 		  = (TextView) findViewById(R.id.profileEmail) ;
+		pPassword	  	  = (EditText) findViewById(R.id.profilePassword) ;
+		pArrondissement	  = (Spinner) findViewById(R.id.profileArrondissement) ;
+		pTelephone	  	  = (TextView) findViewById(R.id.profileTelephone) ;
+		pProf		  	  = (Spinner) findViewById(R.id.profilegroupIsProf) ;
 
 		editerButton  = (Button) findViewById(R.id.Button_EditerProfile);
 		annulerButton = (Button) findViewById(R.id.Button_AnnulerEditerProfile);
@@ -128,14 +132,15 @@ public class ProfileActivity extends DashboardActivity
 
 	}
 	private void ReInitialiser() {
-		pNom.setText(Profile.nom);
-		pPrenom.setText(Profile.prenom);
-		pEmail.setText(Profile.email);
+		pPassword.setText(Profile.password);
+		//pArrondissement.set(Profile.adresse);
+		pTelephone.setText(Profile.numTel);
+		//pProf
 	}
 
 	private void RecupererLesChamps() {
-		Nom 		= pNom.getText().toString(); 
-		Prenom 		= pPrenom.getText().toString() ;
+		Password 		= pPassword.getText().toString(); 
+		Telephone		= pTelephone.getText().toString();
 
 		// Email 		= pEmail.getText().toString();
 		//Password 	= pPassword.getText().toString();
