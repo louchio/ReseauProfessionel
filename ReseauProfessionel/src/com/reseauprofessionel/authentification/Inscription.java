@@ -92,7 +92,7 @@ public class Inscription extends DashboardActivity {
 		AnnulerButton   = (Button) findViewById(R.id.AnnulerButton);
 		
 		SpinnerCivilite = (Spinner) findViewById(R.id.ETgroupSexe);
-		SpinnerProf = (Spinner) findViewById(R.id.ETgroupArrondissement);
+		SpinnerArrondissement = (Spinner) findViewById(R.id.ETgroupArrondissement);
 		SpinnerProf = (Spinner) findViewById(R.id.ETgroupIsProf);
 		
 		List Civilite = new ArrayList();
