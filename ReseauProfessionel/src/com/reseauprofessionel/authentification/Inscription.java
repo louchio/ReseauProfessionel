@@ -95,25 +95,44 @@ public class Inscription extends DashboardActivity {
 		SpinnerArrondissement = (Spinner) findViewById(R.id.ETgroupArrondissement);
 		SpinnerProf = (Spinner) findViewById(R.id.ETgroupIsProf);
 		
-		List Civilite = new ArrayList();
+		List<String> Civilite = new ArrayList<String>();
 		Civilite.add("Monsieur");
 		Civilite.add("Madame");
-		ArrayAdapter dataAdapterCivilite = new ArrayAdapter(this,android.R.layout.simple_spinner_item, Civilite);
+		ArrayAdapter<String> dataAdapterCivilite = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, Civilite);
 		dataAdapterCivilite.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		SpinnerCivilite.setAdapter(dataAdapterCivilite);
 		
-		List Arrondissement = new ArrayList();
-		Civilite.add("1er");
-		Civilite.add("2ième");
-		Civilite.add("3ième");
-		ArrayAdapter dataAdapterArrondissement = new ArrayAdapter(this,android.R.layout.simple_spinner_item, Arrondissement);
+		List<String> Arrondissement = new ArrayList<String>();
+		Arrondissement.add("1er arrondissement");
+		Arrondissement.add("2ème arrondissement");
+		Arrondissement.add("3ème arrondissement");
+		Arrondissement.add("4ème arrondissement");
+		Arrondissement.add("5ème arrondissement");
+		Arrondissement.add("6ème arrondissement");
+		Arrondissement.add("7ème arrondissement");
+		Arrondissement.add("8ème arrondissement");
+		Arrondissement.add("9ème arrondissement");
+		Arrondissement.add("10ème arrondissement");
+		Arrondissement.add("11ème arrondissement");
+		Arrondissement.add("12ème arrondissement");
+		Arrondissement.add("13ème arrondissement");
+		Arrondissement.add("14ème arrondissement");
+		Arrondissement.add("15ème arrondissement");
+		Arrondissement.add("16ème arrondissement");
+		Arrondissement.add("17ème arrondissement");
+		Arrondissement.add("18ème arrondissement");
+		Arrondissement.add("19ème arrondissement");
+		Arrondissement.add("20ème arrondissement");
+		
+
+		ArrayAdapter<String> dataAdapterArrondissement = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, Arrondissement);
 		dataAdapterCivilite.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		SpinnerArrondissement.setAdapter(dataAdapterArrondissement);
 		
-		List Prof = new ArrayList();
+		List<String> Prof = new ArrayList<String>();
 		Prof.add("Oui");
 		Prof.add("Non");
-		ArrayAdapter dataAdapterProf = new ArrayAdapter(this,android.R.layout.simple_spinner_item, Prof);
+		ArrayAdapter<String> dataAdapterProf = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, Prof);
 		dataAdapterProf.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		SpinnerProf.setAdapter(dataAdapterProf);
 	
