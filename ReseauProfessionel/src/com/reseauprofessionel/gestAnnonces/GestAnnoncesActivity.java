@@ -17,6 +17,10 @@
 package com.reseauprofessionel.gestAnnonces;
 
 import java.util.ArrayList;
+
+import android.view.View;
+import android.widget.Spinner;
+
 import java.util.HashMap;
 import java.util.List;
 
@@ -32,14 +36,24 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListAdapter;
+import android.widget.RadioGroup;
 import android.widget.SimpleAdapter;
+import android.widget.SpinnerAdapter;
 import android.widget.Toast;
+import android.widget.AdapterView.OnItemSelectedListener;
 
+import com.reseauprofessionel.authentification.AuthentificationActivity;
+import com.reseauprofessionel.authentification.Inscription;
+import com.reseauprofessionel.board.DashboardActivity;
 import com.reseauprofessionel.board.DashboardListActivity;
 import com.reseauprofessionel.board.HomeActivity;
 import com.reseauprofessionel.board.R;
 import com.reseauprofessionel.json.JSONParser;
+import com.reseauprofessionel.profile.Profile;
 
 /**
  * @author Anas KHABALI
@@ -48,27 +62,45 @@ import com.reseauprofessionel.json.JSONParser;
  *
  */
 
-public class GestAnnoncesActivity extends Activity { //DashboardListActivity
+public class GestAnnoncesActivity extends DashboardActivity { //DashboardListActivity
 
 	private ProgressDialog pDialog;
 	JSONParser jParser = new JSONParser();
 	JSONArray tablieux = null;
-	ArrayList<HashMap<String, String>> lieuxArrayList;//la liste finale des lieux
+	ArrayList<HashMap<String, String>> professionsArrayList;//la liste finale des lieux
+	private Spinner spinnerProf;
+	JSONParser jsonParser = new JSONParser();
+	 
 	
 	//url des lieux favoris
-	private static String url_authentification = "http://10.0.2.2/reseauprofessionnel/controller/lieuxfavoris.php";
+	private static String url_authentification = "http://10.0.2.2/reseauprofessionnel/controller/get_professions.php";
+	private static String url_nouvelle_annonce = "http://10.0.2.2/reseauprofessionnel/controller/Nouvelle_Annonce.php";
 	// noeud nom dans json
 	//Textes complets 	idLieuxFavoris 	nom 	longitude 	latitude 	Membres_idMembres
 	
 	private static final String TAG_SUCCESS = "success";
-	private static final String TAG_LIEUXFAVORIS = "lieuxfavoris";
-	private static final String TAG_IDLIEUXFAVORIS = "idLieuxFavoris";
+	private static final String TAG_PROFESSIONS = "professions";
+	private static final String TAG_IDPROFESSION = "idProfession";
 	private static final String TAG_NOM = "nom";
-	private static final String TAG_LONGITUDE = "longitude";
-	private static final String TAG_LATITUDE = "latitude";
-	
+	private static final String TAG_TITREANNONCE = "titreAnnonce";
+	private static final String TAG_TexteAnnonce = "texteAnnonce";
+	private static final String TAG_IDUTILISATEUR = "idUtilisateur";
+	private static final String TAG_DESTINATION = "destination";
 	
 	private String id = null; 
+		
+	EditText ETTitreAnnonce ;
+	EditText ETTextAnnonce ;
+	Spinner SpinnerProf;
+	Button PublierButton;
+	RadioGroup groupRadioUser;
+	
+	private String TitreAnnonce = null ; 
+	private String TexteAnnonce = null ; 
+	private String idUtilisateur = "0";
+	private String idProfession = null;
+	private String destination = null;
+	
 	
 	
 @Override
@@ -77,13 +109,131 @@ protected void onCreate(Bundle savedInstanceState)
     super.onCreate(savedInstanceState);
     setContentView (R.layout.activity_ajtannonce);
     //setTitleFromActivityLabel (R.id.title_text);
-    lieuxArrayList = new ArrayList<HashMap<String,String>>();
+    professionsArrayList = new ArrayList<HashMap<String,String>>();
     
-    //new listeLieuxFavoris().execute();
+    spinnerProf = (Spinner) findViewById(R.id.spinnerMetier);
+    PublierButton = (Button) findViewById(R.id.PublierButton);
+    groupRadioUser = (RadioGroup) findViewById(R.id.groupTypeUser);
+    
+    initialisation();
+    
+    PublierButton.setOnClickListener(new View.OnClickListener() {
+		
+		@Override
+		public void onClick(View v) {
+			
+			Log.d("yowwwww", "yess");
+			RecupererLesChamps();
+			new NouvelleAnnonce().execute(); 
+		}
+	}) ;
+    
+    if(Profile.estProfessionnel.equals("0")){
+    	groupRadioUser.setVisibility(View.INVISIBLE);
+    	destination = "1";
+    }
+    new listeProfessions().execute();
+}
+
+public void initialisation(){
+	ETTitreAnnonce		= (EditText) findViewById(R.id.titre_Annonce) ;
+	ETTextAnnonce 	= (EditText) findViewById(R.id.texteAnnonce) ;
+}
+
+private void RecupererLesChamps() {
+	TitreAnnonce 		= ETTitreAnnonce.getText().toString(); 
+	TexteAnnonce 		= ETTextAnnonce.getText().toString() ;
+	idUtilisateur = GestAnnoncesActivity.idUser;
+	
+	//idProfession = 	spinnerProf.getSelectedItem().
+	
+	//System.out.println("titre annonce :"+TitreAnnonce+",  Texte Annonce : "+TexteAnnonce+" , IdUser = "+idUtilisateur);
+}
+
+public class MonSpinner1Listener implements OnItemSelectedListener {
+	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
+			long arg3) {
+		HashMap<String, String> map = new HashMap<String, String>();
+		map=professionsArrayList.get(arg2);
+		idProfession = map.get(TAG_IDPROFESSION);
+		
+		Log.i("mmmmmmmmmmmmmmmmmmmm", "idProf = "+idProfession);
+		//Toast.makeText(getApplicationContext(), "Selected : " + nomStrings[arg2],Toast.LENGTH_SHORT).show();
+	}
+	public void onNothingSelected(AdapterView<?> arg0) {
+	}
+  }
+
+//Définition de la classe NouvelleAnnonce pour ajoute une Annonce
+
+class NouvelleAnnonce extends AsyncTask<String, String, String> {
+
+	/**
+	 * Before starting background thread Show Progress Dialog
+	 * */
+	@Override
+	protected void onPreExecute() {
+		super.onPreExecute();
+		pDialog = new ProgressDialog(GestAnnoncesActivity.this);
+		pDialog.setMessage("Chargement ...");
+		pDialog.setIndeterminate(false);
+		pDialog.setCancelable(true);
+		pDialog.show();
+	}
+
+	/**
+	 * Creation du membre
+	 * */
+	protected String doInBackground(String... args) {
+
+		// Building Parameters
+		List<NameValuePair> params = new ArrayList<NameValuePair>();
+		/*params.add(new BasicNameValuePair(TAG_TITREANNONCE, TitreAnnonce));
+		params.add(new BasicNameValuePair(TAG_TexteAnnonce, TexteAnnonce));
+		params.add(new BasicNameValuePair(TAG_IDUTILISATEUR, idUtilisateur));*/
+		
+		params.add(new BasicNameValuePair(TAG_TITREANNONCE, TitreAnnonce));
+		params.add(new BasicNameValuePair(TAG_TexteAnnonce, TexteAnnonce));
+		params.add(new BasicNameValuePair(TAG_IDUTILISATEUR, GestAnnoncesActivity.idUser));
+		params.add(new BasicNameValuePair(TAG_IDPROFESSION, idProfession));
+		params.add(new BasicNameValuePair(TAG_DESTINATION, destination));
+		
+		
+
+		// getting JSON Object
+		// Note that create membre url accepts POST method
+		JSONObject json = jsonParser.makeHttpRequest(url_nouvelle_annonce,"POST", params);
+		
+		// check log cat fro response
+		Log.d("Create Response", json.toString());
+
+		// check for success tag
+		try {
+			int success = json.getInt(TAG_SUCCESS);
+			if (success == 1) {
+				// successfully created member
+				Intent i = new Intent(getApplicationContext(), GestAnnoncesActivity.class);
+				startActivity(i);
+				finish();
+			}
+		} catch (JSONException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
+
+	/**
+	 * After completing background task Dismiss the progress dialog
+	 * **/
+	protected void onPostExecute(String file_url) {
+		// dismiss the dialog once done
+		pDialog.dismiss();
+	}
 }
 
 //Définition une classe interne qui represente la tache asynchrone à exéciter
-public class listeLieuxFavoris extends AsyncTask<String, String, String> {	
+public class listeProfessions extends AsyncTask<String, String, String> {	
 	
 	 // La méthode  onPreExecute appelée avant le traitement
 	@Override
@@ -109,6 +259,7 @@ public class listeLieuxFavoris extends AsyncTask<String, String, String> {
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair("Membres_idMembres", id));
 		
+		Log.d("YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY= 11111  ", "1");
 		// getting JSON Object
 		// Note that authentifier url accepts POST method
 		JSONObject json = jParser.makeHttpRequest(url_authentification,"GET", params);
@@ -122,30 +273,26 @@ public class listeLieuxFavoris extends AsyncTask<String, String, String> {
 
 			if (success == 1) {
 				// si les membres a des lieux favoris!!
-				tablieux = json.getJSONArray(TAG_LIEUXFAVORIS);
+				tablieux = json.getJSONArray(TAG_PROFESSIONS);
 				
 				for (int i = 0; i < tablieux.length(); i++) {
 					
-					JSONObject lieu = tablieux.getJSONObject(i);
+					JSONObject profession = tablieux.getJSONObject(i);
 
 					// Storing each json item in variable
 					
-					String id_lieu = lieu.getString(TAG_IDLIEUXFAVORIS);
-					String nom = lieu.getString(TAG_NOM);
-					String lng = lieu.getString(TAG_LONGITUDE);
-					String lat = lieu.getString(TAG_LATITUDE);
+					String id_profession = profession.getString(TAG_IDPROFESSION);
+					String nom = profession.getString(TAG_NOM);
 					
 					//trace(""+i);
 					// creating new HashMap
 					HashMap<String, String> map = new HashMap<String, String>();
 
 					// adding each child node to HashMap key => value
-					map.put(TAG_IDLIEUXFAVORIS, id_lieu);
+					map.put(TAG_IDPROFESSION, id_profession);
 					map.put(TAG_NOM, nom);
-					map.put(TAG_LONGITUDE, lng);
-					map.put(TAG_LATITUDE, lat);
 					// adding HashList to ArrayList
-					lieuxArrayList.add(map);
+					professionsArrayList.add(map);
 					
 					
 				}
@@ -179,16 +326,18 @@ public class listeLieuxFavoris extends AsyncTask<String, String, String> {
 							public void run() {
 								
 								
-								/**
-								 * Updating parsed JSON data into ListView
-								 * */
-								ListAdapter adapter = new SimpleAdapter(
-										GestAnnoncesActivity.this, lieuxArrayList,
-										R.layout.item_lieuxfavoris, new String[] { TAG_IDLIEUXFAVORIS,TAG_NOM,TAG_LONGITUDE,
-												TAG_LATITUDE},
-										new int[] { R.id.idlieux, R.id.nom,R.id.longitude,R.id.latitude });
+								
+								SpinnerAdapter adapter = new SimpleAdapter(
+										GestAnnoncesActivity.this, 
+										
+										professionsArrayList,
+										
+										R.layout.item_profession, new String[] {TAG_NOM},
+										new int[] { R.id.nom_profession});
 								// updating liste view
-								//setListAdapter(adapter);
+								spinnerProf.setAdapter(adapter);
+								spinnerProf.setOnItemSelectedListener(new MonSpinner1Listener());
+				
 								}
 							});
 					}else{
