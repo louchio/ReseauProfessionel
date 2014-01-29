@@ -33,6 +33,7 @@
     <string name="title_about">About</string>
     <string name="title_home">Home</string>
     <string name="title_search">Search</string>
+    <string name="description_delete">delete</string>
     <string name="title_profile">Profile</string>
     <string name="title_request">Request</string>
     <string name="title_friends">Friends</string>
@@ -67,5 +68,6 @@
 	<string name="select_metier">Metiers</string>
 	<string name="role_user">Role</string>
 	<string name="Publier">Publier</string>
+	<string name="Modifier">Modifier</string>
 
 </resources>
