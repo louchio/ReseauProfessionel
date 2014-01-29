@@ -8,6 +8,7 @@ import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.AsyncTask;
@@ -17,13 +18,13 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import com.reseauprofessionel.board.DashboardActivity;
 import com.reseauprofessionel.board.R;
 import com.reseauprofessionel.json.JSONParser;
 
+@SuppressLint("CutPasteId")
 public class Inscription extends DashboardActivity {
 	
 	
@@ -37,70 +38,64 @@ public class Inscription extends DashboardActivity {
 	private static String url_membre_existe = "http://10.0.2.2/reseauprofessionnel/controller/Membre_existe.php";
 
 	// JSON Node names
-	private static final String TAG_SEXE = "sexe";
+	private static final String TAG_CIVILITE = "civilite";
 	private static final String TAG_NOM = "nom";
 	private static final String TAG_PRENOM = "prenom";
 	private static final String TAG_EMAIL = "email";
 	private static final String TAG_PASSWORD = "password";
+	private static final String TAG_ARR = "arr";
 	private static final String TAG_TELEPHONE = "telephone";
-	private static final String TAG_VILLE = "ville";
 	private static final String TAG_ISPROF = "isProf";
 	private static final String TAG_SUCCESS = "success";
 	private static final String TAG_MESSAGE = "message";
 	
-	RadioGroup ETSexe;
+	Spinner  ETCivilite;
 	EditText ETNom ;
 	EditText ETPrenom ;
 	EditText ETEmail ;
 	EditText ETPassword ;
 	EditText ETPasswordC ;
+	Spinner  ETArr ;
 	EditText ETTelephone ;
-	EditText ETVille ;
-	RadioGroup ETIsProf;
+	Spinner  ETIsProf;
 	Button   SinscrireButton ;
 	Button   AnnulerButton ;
 	
-	private String 	Sexe		= null ;
+	private String 	Civilite	= null ;
 	private String 	Nom			= null ; 
 	private String 	Prenom 		= null ; 
 	private String 	Email 		= null ; 
 	private String 	Password 	= null ; 
 	private String 	PasswordC 	= null ;
+	private String 	Arr		 	= null ;
 	private String 	Telephone 	= null ;
-	private String 	Ville	 	= null ;
 	private String	IsProf	 	= null ;
-	Spinner	 SpinnerCivilite ;
-	Spinner	 SpinnerArrondissement ;
-	Spinner	 SpinnerProf ;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.inscription);
 		
-		//ETSexe		= (Spinner) findViewById(R.id.ETgroupSexe) ;
+		ETCivilite		= (Spinner) findViewById(R.id.ETgroupSexe) ;
 		ETNom 		= (EditText) findViewById(R.id.ETNom) ;
 		ETPrenom 	= (EditText) findViewById(R.id.ETPrenom) ;
 		ETEmail 	= (EditText) findViewById(R.id.ETEmail) ;
 		ETPassword 	= (EditText) findViewById(R.id.ETPassword) ;
 		ETPasswordC = (EditText) findViewById(R.id.ETPasswordC) ;
+		ETArr		= (Spinner) findViewById(R.id.ETgroupArrondissement) ;
 		ETTelephone	= (EditText) findViewById(R.id.ETTelephone) ;
-		//ETVille 	= (EditText) findViewById(R.id.ETVille) ;
-		//ETIsProf	= (RadioGroup) findViewById(R.id.ETgroupIsProf) ;
-
+		ETIsProf	= (Spinner) findViewById(R.id.ETgroupIsProf) ;
 		SinscrireButton = (Button) findViewById(R.id.SinscrireButton);
 		AnnulerButton   = (Button) findViewById(R.id.AnnulerButton);
 		
-		SpinnerCivilite = (Spinner) findViewById(R.id.ETgroupSexe);
-		SpinnerArrondissement = (Spinner) findViewById(R.id.ETgroupArrondissement);
-		SpinnerProf = (Spinner) findViewById(R.id.ETgroupIsProf);
-		
+		// Remplir les listes déroulantes
 		List<String> Civilite = new ArrayList<String>();
 		Civilite.add("Monsieur");
 		Civilite.add("Madame");
-		ArrayAdapter<String> dataAdapterCivilite = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, Civilite);
+		ArrayAdapter<String> dataAdapterCivilite = new ArrayAdapter<String>
+													(this,android.R.layout.simple_spinner_item, Civilite);
 		dataAdapterCivilite.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		SpinnerCivilite.setAdapter(dataAdapterCivilite);
+		ETCivilite.setAdapter(dataAdapterCivilite);
 		
 		List<String> Arrondissement = new ArrayList<String>();
 		Arrondissement.add("1er arrondissement");
@@ -127,14 +122,14 @@ public class Inscription extends DashboardActivity {
 
 		ArrayAdapter<String> dataAdapterArrondissement = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, Arrondissement);
 		dataAdapterCivilite.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		SpinnerArrondissement.setAdapter(dataAdapterArrondissement);
+		ETArr.setAdapter(dataAdapterArrondissement);
 		
 		List<String> Prof = new ArrayList<String>();
 		Prof.add("Oui");
 		Prof.add("Non");
 		ArrayAdapter<String> dataAdapterProf = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, Prof);
 		dataAdapterProf.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		SpinnerProf.setAdapter(dataAdapterProf);
+		ETIsProf.setAdapter(dataAdapterProf);
 	
 		SinscrireButton.setOnClickListener(new View.OnClickListener() {
 			
@@ -157,36 +152,32 @@ public class Inscription extends DashboardActivity {
 		
 	}
 	private void Initialiser() {
-		//ETSexe.check(R.id.ETradioHomme);
 		ETNom.setText("")		;
 		ETPrenom.setText("")	;
 		ETEmail.setText("")		;
 		ETPassword.setText("")	;
 		ETPasswordC.setText("")	;
 		ETTelephone.setText("")	;
-		ETVille.setText("")	;
-		//ETIsProf.check(R.id.ETradioNonProfessionnel);
 	}
 
 	private void RecupererLesChamps() {
-		// Recuperer le bouton du sexe selectionné
-		//if(ETSexe.getCheckedRadioButtonId() == R.id.ETradioHomme) Sexe = "Homme" ;
-		//else Sexe = "Femme" ;
+		// Recuperer le bouton du civilite selectionné
+		Civilite = ETCivilite.getSelectedItem().toString();
 		// TODO
-		System.out.println("aaaaaaaaaaa"+Sexe);
+		System.out.println("aaaaaaaaaaa"+Civilite);
 		Nom 		= ETNom.getText().toString();
 		Prenom 		= ETPrenom.getText().toString();
 		Email 		= ETEmail.getText().toString();
 		Password 	= ETPassword.getText().toString();
 		PasswordC 	= ETPasswordC.getText().toString();
+		Arr			= ETArr.getSelectedItem().toString();
 		Telephone 	= ETTelephone.getText().toString();
-		Ville 		= ETVille.getText().toString();
-		//if(ETIsProf.getCheckedRadioButtonId() == R.id.ETradioProfessionnel) IsProf = "true" ;
-		//else IsProf = "false" ;
+		IsProf 		= ETIsProf.getSelectedItem().toString();
 	}
 	
 	boolean  SaisieIsValidated() {
-		if(Nom.equals("") || Prenom.equals("")|| Email.equals("") || Password.equals("") || PasswordC.equals("") ) {
+		if(Nom.equals("") || Prenom.equals("")|| Email.equals("") || Password.equals("") 
+			|| PasswordC.equals("") || Telephone.equals("")) {
 			toast("Veuillez remplire tout les champs !");
 			return false ;
 		} else{
@@ -246,13 +237,13 @@ public class Inscription extends DashboardActivity {
 
 			// Building Parameters
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
-			params.add(new BasicNameValuePair(TAG_SEXE, Sexe));
+			params.add(new BasicNameValuePair(TAG_CIVILITE, Civilite));
 			params.add(new BasicNameValuePair(TAG_NOM, Nom));
 			params.add(new BasicNameValuePair(TAG_PRENOM, Prenom));
 			params.add(new BasicNameValuePair(TAG_EMAIL, Email));
 			params.add(new BasicNameValuePair(TAG_PASSWORD, Password));
+			params.add(new BasicNameValuePair(TAG_ARR, Arr));
 			params.add(new BasicNameValuePair(TAG_TELEPHONE, Telephone));
-			params.add(new BasicNameValuePair(TAG_VILLE, Ville));
 			params.add(new BasicNameValuePair(TAG_ISPROF, IsProf));
 
 			// getting JSON Object
@@ -285,6 +276,5 @@ public class Inscription extends DashboardActivity {
 			// dismiss the dialog once done
 			pDialog.dismiss();
 		}
-
 	}
 }
