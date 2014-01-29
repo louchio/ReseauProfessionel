@@ -12,19 +12,46 @@
     distributed under the License is distributed on an "AS IS" BASIS,
     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
     See the License for the specific language governing permissions and
-    limitations under the License.
+    limitations under the License.
 -->
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
-      <!--  <ListView
+    <!--
+    <ListView
         android:id="@android:id/list"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_weight="12.03" >
-    </ListView>-->
+    </ListView>
+    -->
+
+    <LinearLayout style="@style/TitleBar" >
+
+        <ImageButton
+            style="@style/TitleBarAction"
+            android:contentDescription="@string/description_home"
+            android:onClick="onClickHome"
+            android:src="@drawable/title_home" />
+
+        <ImageView style="@style/TitleBarSeparator" />
+
+        <TextView style="@style/TitleBarText" />
+
+        <ImageButton
+            style="@style/TitleBarAction"
+            android:contentDescription="@string/description_about"
+            android:onClick="onClickAbout"
+            android:src="@drawable/title_about" />
+
+        <ImageButton
+            style="@style/TitleBarAction"
+            android:contentDescription="@string/description_search"
+            android:onClick="onClickSearch"
+            android:src="@drawable/title_search" />
+    </LinearLayout>
 
     <ScrollView
         android:id="@+id/scrollView1"
@@ -44,7 +71,7 @@
                 android:text="Créer une annonce"
                 android:textColor="#000000"
                 android:textSize="18sp" />
-            
+
             <TextView
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
@@ -119,10 +146,10 @@
                 android:layout_marginTop="20dp"
                 android:text="@string/Publier" />
         </LinearLayout>
+    </ScrollView>
 
-    </ScrollView>	  
-		
-		<!--  <TextView 
+    <!--
+        <TextView 
 			    android:layout_width="fill_parent"
 			    android:layout_height="wrap_content" 
 			    android:text="vous jouer le rôle d’un professionnel ?"
@@ -140,6 +167,7 @@
 		    <item>Oui</item>
         	<item>Nom</item>
 		    
-		</Spinner>-->
+		</Spinner>
+    -->
 
 </LinearLayout>
