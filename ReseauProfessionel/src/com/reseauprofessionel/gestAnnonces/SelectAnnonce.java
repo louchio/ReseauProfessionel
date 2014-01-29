@@ -260,7 +260,7 @@ class SupprimerAnnonce extends AsyncTask<String, String, String> {
 		// Building Parameters
 		List<NameValuePair> params = new ArrayList<NameValuePair>();
 		params.add(new BasicNameValuePair(TAG_IDANNONCE,idannonceSuprim));
-		Log.i("SUPRESSIONNNN","  Idannonce Supprimer = "+idannonce);
+		Log.i("SUPRESSIONNNN","  Idannonce Supprimer = "+idannonceSuprim);
 		// ##############" destiniation ###################################
 		//params.add(new BasicNameValuePair(TAG_DESTINATION, destination));
 		
@@ -414,7 +414,7 @@ public class listeProfessions extends AsyncTask<String, String, String> {
 	public void onClickDelete (View v)
 	{
 	   // super.onClickDelete(v);	
-	    idannonceSuprim =idannonce; 
+	    idannonceSuprim =ListAllAnnoceParProf.idannonce; 
 	    new SupprimerAnnonce().execute();
 	}
 }
