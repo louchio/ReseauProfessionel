@@ -60,7 +60,7 @@
                 android:layout_marginBottom="20dp"
                 android:ems="10"
                 android:hint="Titre_Annonce"
-                android:inputType="numberDecimal" />
+                android:inputType="text" />
 
             <TextView
                 android:layout_width="fill_parent"
@@ -93,7 +93,7 @@
                 android:prompt="@string/select_metier" />
 
             <RadioGroup
-                android:id="@+id/group"
+                android:id="@+id/groupTypeUser"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:checkedButton="@+id/radio2"
