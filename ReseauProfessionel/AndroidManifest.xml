@@ -68,6 +68,17 @@
             android:theme="@style/Theme.D1"
             android:label="@string/title_search"
             />
+      <activity android:name="com.reseauprofessionel.gestAnnonces.ListAllProfessions"
+            android:theme="@style/Theme.D1"
+            android:label="@string/title_search"
+            />
+      <activity android:name="com.reseauprofessionel.gestAnnonces.ListAllAnnoceParProf"
+            android:theme="@style/Theme.D1"
+            android:label="@string/title_search"
+            />
+      <activity android:name="com.reseauprofessionel.gestAnnonces.SelectAnnonce"
+            android:theme="@style/Theme.D1"
+            android:label="@string/title_search"/>
       
       <service android:name="com.reseauprofessionel.servicegps.GPSService"/>
       </application>
