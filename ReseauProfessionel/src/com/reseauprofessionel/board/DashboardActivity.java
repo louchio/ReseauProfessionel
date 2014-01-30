@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.reseauprofessionel.friends.AllFriendsActivity;
 import com.reseauprofessionel.gestAnnonces.GestAnnoncesActivity;
 import com.reseauprofessionel.gestAnnonces.ListAllProfessions;
+import com.reseauprofessionel.gestAnnonces.RechercheAnnonce;
 import com.reseauprofessionel.lieuxfavoris.LieuxFavorisActivity;
 import com.reseauprofessionel.profile.ProfileActivity;
 import com.reseauprofessionel.request.RequestActivity;
@@ -195,7 +196,7 @@ public void onClickFeature (View v)
            i = new Intent(getApplicationContext(), ProfileActivity.class);
            break;
       case R.id.home_btn_feature2 :
-           i = new Intent(getApplicationContext(), RequestActivity.class);
+    	  i = new Intent(getApplicationContext(), RechercheAnnonce.class);
            break;
       case R.id.home_btn_feature3 :
     	   i = new Intent(getApplicationContext(), AllFriendsActivity.class);
@@ -208,7 +209,7 @@ public void onClickFeature (View v)
            i = new Intent(getApplicationContext(), ListAllProfessions.class);
            break;
       case R.id.home_btn_feature6 :
-           i = new Intent(getApplicationContext(), F6Activity.class);
+    	  i = new Intent(getApplicationContext(), RequestActivity.class);
            break;
       default: 
     	   break;

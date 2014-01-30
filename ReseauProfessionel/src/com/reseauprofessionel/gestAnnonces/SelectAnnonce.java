@@ -417,5 +417,14 @@ public class listeProfessions extends AsyncTask<String, String, String> {
 	    idannonceSuprim =ListAllAnnoceParProf.idannonce; 
 	    new SupprimerAnnonce().execute();
 	}
+	
+	public void onClickRetourne(View v){
+		Intent i = new Intent(getApplicationContext(),ListAllAnnoceParProf.class);
+		// Closing all previous activities
+		i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(i);
+	}
+	
+	
 }
  // end class

@@ -1,5 +1,7 @@
 package com.reseauprofessionel.authentification;
 
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,8 +75,8 @@ public class AuthentificationActivity extends DashboardActivity {
 		inputEmail = (EditText) findViewById(R.id.email);
 		inputPassword = (EditText) findViewById(R.id.password);
 
-		inputEmail.setText("anas@gmail.com");
-		inputPassword.setText("anas");
+		inputEmail.setText("c");
+		inputPassword.setText("c");
 
 		seconnecterBtn = (Button) findViewById(R.id.seconnecter);
 		annulerBtn = (Button) findViewById(R.id.annuler);
@@ -113,7 +115,13 @@ public class AuthentificationActivity extends DashboardActivity {
 		protected String doInBackground(String... args) {
 
 			String email = inputEmail.getText().toString();
-			String password = inputPassword.getText().toString();
+			String password = null;
+			try {
+				password = sha1(inputPassword.getText().toString());
+			} catch (NoSuchAlgorithmException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
 
 			// Building Parameters
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
@@ -144,7 +152,6 @@ public class AuthentificationActivity extends DashboardActivity {
 										(String) user.get("adresse"),
 										(String) user.get("email"),
 										(String) user.get("estProfessionnel"),
-										(String) user.get("login"),
 										(String) user.get("password"),
 										(String) user.get("idProfession"));
 
@@ -190,8 +197,17 @@ public class AuthentificationActivity extends DashboardActivity {
 		}
 
 	}
-
-
+	
+	static String sha1(String input) throws NoSuchAlgorithmException {
+	    MessageDigest mDigest = MessageDigest.getInstance("SHA1");
+	    byte[] result = mDigest.digest(input.getBytes());
+	    StringBuffer sb = new StringBuffer();
+	    for (int i = 0; i < result.length; i++) {
+	        sb.append(Integer.toString((result[i] & 0xff) + 0x100, 16).substring(1));
+	    }
+	     
+	    return sb.toString();
+	 }
 	/*
 	@Override
 	protected void onStop() {

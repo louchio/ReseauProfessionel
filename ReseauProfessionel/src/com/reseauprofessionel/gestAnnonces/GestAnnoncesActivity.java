@@ -18,6 +18,7 @@ package com.reseauprofessionel.gestAnnonces;
 
 import java.util.ArrayList;
 
+
 import android.view.View;
 import android.widget.Spinner;
 
@@ -99,7 +100,7 @@ public class GestAnnoncesActivity extends DashboardActivity { //DashboardListAct
 	private String TexteAnnonce = null ; 
 	private String idUtilisateur = "0";
 	private String idProfession = null;
-	private String destination = null;
+	private String destination = "0";
 	
 	
 	
@@ -114,8 +115,9 @@ protected void onCreate(Bundle savedInstanceState)
     spinnerProf = (Spinner) findViewById(R.id.spinnerMetier);
     PublierButton = (Button) findViewById(R.id.PublierButton);
     groupRadioUser = (RadioGroup) findViewById(R.id.groupTypeUser);
-    
-    initialisation();
+    ETTitreAnnonce		= (EditText) findViewById(R.id.titre_Annonce) ;
+	ETTextAnnonce 	= (EditText) findViewById(R.id.texteAnnonce) ;
+   // initialisation();
     
     PublierButton.setOnClickListener(new View.OnClickListener() {
 		
@@ -128,17 +130,15 @@ protected void onCreate(Bundle savedInstanceState)
 		}
 	}) ;
     
-    if(Profile.estProfessionnel.equals("0")){
-    	groupRadioUser.setVisibility(View.INVISIBLE);
-    	destination = "1";
-    }
+    groupRadioUser.setVisibility(View.INVISIBLE);
+
     new listeProfessions().execute();
 }
 
-public void initialisation(){
+/*public void initialisation(){
 	ETTitreAnnonce		= (EditText) findViewById(R.id.titre_Annonce) ;
 	ETTextAnnonce 	= (EditText) findViewById(R.id.texteAnnonce) ;
-}
+}*/
 
 private void RecupererLesChamps() {
 	TitreAnnonce 		= ETTitreAnnonce.getText().toString(); 

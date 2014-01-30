@@ -23,13 +23,16 @@
 
         <ImageButton
             style="@style/TitleBarAction"
-            android:contentDescription="@string/description_home"
-            android:onClick="onClickHome"
-            android:src="@drawable/title_home" />
+            android:contentDescription="@string/description_retourne"
+            android:onClick="onClickRetourne"
+            android:src="@drawable/title_retourne" />
 
         <ImageView style="@style/TitleBarSeparator" />
 
-        <TextView style="@style/TitleBarText" />
+        <TextView style="@style/TitleBarText" 
+            android:text="Professions"
+            android:layout_marginLeft="40dp"
+            />/>
 
         <ImageButton
             style="@style/TitleBarAction"

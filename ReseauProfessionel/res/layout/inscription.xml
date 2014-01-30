@@ -4,20 +4,15 @@
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
-     <LinearLayout style="@style/TitleBar" >
+    <LinearLayout style="@style/TitleBar" >
 
-        <ImageButton
-            style="@style/TitleBarAction"
-            android:contentDescription="@string/description_retourne"
-            android:onClick="onClickRetourne"
-            android:src="@drawable/title_retourne" />
 
         <ImageView style="@style/TitleBarSeparator" />
 
-        <TextView style="@style/TitleBarText" 
-            android:text="Insription"
+        <TextView
+            style="@style/TitleBarText"
             android:layout_marginLeft="70dp"
-            />
+            android:text="Insription" />
 
         <ImageButton
             style="@style/TitleBarAction"
@@ -25,13 +20,9 @@
             android:onClick="onClickAbout"
             android:src="@drawable/title_about" />
 
-        <!-- <ImageButton
-            style="@style/TitleBarAction"
-            android:contentDescription="@string/description_search"
-            android:onClick="onClickSearch"
-            android:src="@drawable/title_search" /> -->
+        
     </LinearLayout>
-    
+
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="wrap_content"
@@ -219,7 +210,6 @@
                             android:layout_marginRight="5dp"
                             android:padding="5dp"
                             android:text="Arrondissement dans Paris" />
-
                     </LinearLayout>
 
                     <Spinner
@@ -272,6 +262,31 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_weight="1" />
+                </TableRow>
+
+                <TableRow
+                    android:id="@+id/ETChampMetiers"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" >
+
+                        <TextView
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="10dp"
+                            android:gravity="center"
+                            android:text="Métier"
+                            android:textColor="#000000" />
+                    </LinearLayout>
+
+                    <Spinner
+                        android:id="@+id/ETspinnerMetier"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:prompt="@string/select_metier" />
                 </TableRow>
 
                 <TableRow

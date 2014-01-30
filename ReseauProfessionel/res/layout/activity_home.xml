@@ -31,7 +31,11 @@
 
         <ImageView style="@style/TitleBarSeparator" />
 
-        <TextView style="@style/TitleBarText" />
+        <TextView style="@style/TitleBarText"
+            android:text="Acceuil"
+            android:layout_marginLeft="40dp"
+            />
+            " />
 
         <ImageButton
             style="@style/TitleBarAction"

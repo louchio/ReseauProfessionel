@@ -220,5 +220,12 @@ public class listeProfessions extends AsyncTask<String, String, String> {
 			  startActivity(i);
 		  }  
 	}
+	
+	public void onClickRetourne(View v){
+		Intent i = new Intent(getApplicationContext(),HomeActivity.class);
+		// Closing all previous activities
+		i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(i);
+	}
 }
  // end class

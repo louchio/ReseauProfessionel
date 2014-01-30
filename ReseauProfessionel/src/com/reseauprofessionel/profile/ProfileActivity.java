@@ -48,7 +48,6 @@ import com.reseauprofessionel.json.JSONParser;
  *
  */
 
-
 public class ProfileActivity extends DashboardActivity 
 {
 	// Progress Dialog
@@ -61,28 +60,25 @@ public class ProfileActivity extends DashboardActivity
 	//private static String url_membre_existe = "http://10.0.2.2/reseauprofessionnel/controller/Membre_existe.php";
 
 	// JSON Node names
-	private static final String TAG_IDM = "idMembres";
-	private static final String TAG_NOM = "nom";
-	private static final String TAG_PRENOM = "prenom";
-	// private static final String TAG_EMAIL = "email";
-	//private static final String TAG_PASSWORD = "password";
+	private static final String TAG_IDM = "idUtilisateur";
+	private static final String TAG_ARR = "arr";
+	private static final String TAG_TELEPHONE = "telephone";
+	
 	private static final String TAG_SUCCESS = "success";
 	// private static final String TAG_MESSAGE = "message";
 
-	EditText pPassword ;
+	TextView pNom ;
+	TextView pPrenom ;
+	TextView pEmail ;
 	Spinner pArrondissement ;
-	TextView pTelephone ;
-	Spinner pProf ;
-
+	EditText pTelephone ;
+	List<String> Arrondissement;
 	Button   editerButton ;
 	Button   annulerButton ;
 
-	private String Nom 			= null ; 
-	private String Prenom 		= null ; 
-	private String Email 		= null ; 
-	private String Password 	= null ; 
 	private String Telephone	= null ;
-	//private String PasswordC 	= null ; 
+	private String Arr 		= null ; 
+  
 
 	/**
 	 * onCreate
@@ -101,47 +97,41 @@ public class ProfileActivity extends DashboardActivity
 	{
 		super.onCreate(savedInstanceState);
 		setContentView (R.layout.activity_profile);
-
-		pPassword	  	  = (EditText) findViewById(R.id.profilePassword) ;
+		
+		pNom 		= (TextView) findViewById(R.id.profileNom) ;
+		pPrenom 	= (TextView) findViewById(R.id.profilePrenom) ;
+		pEmail 		= (TextView) findViewById(R.id.profileEmail) ;
 		pArrondissement	  = (Spinner) findViewById(R.id.profileArrondissement) ;
-		pTelephone	  	  = (TextView) findViewById(R.id.profileTelephone) ;
-		pProf		  	  = (Spinner) findViewById(R.id.profilegroupIsProf) ;
+		pTelephone	  	  = (EditText) findViewById(R.id.profileTelephone) ;
 
 		editerButton  = (Button) findViewById(R.id.Button_EditerProfile);
 		annulerButton = (Button) findViewById(R.id.Button_AnnulerEditerProfile);
 		
-		List<String> Arrondissement = new ArrayList<String>();
+		Arrondissement = new ArrayList<String>();
 		Arrondissement.add("1er arrondissement");
-		Arrondissement.add("2ème arrondissement");
-		Arrondissement.add("3ème arrondissement");
-		Arrondissement.add("4ème arrondissement");
-		Arrondissement.add("5ème arrondissement");
-		Arrondissement.add("6ème arrondissement");
-		Arrondissement.add("7ème arrondissement");
-		Arrondissement.add("8ème arrondissement");
-		Arrondissement.add("9ème arrondissement");
-		Arrondissement.add("10ème arrondissement");
-		Arrondissement.add("11ème arrondissement");
-		Arrondissement.add("12ème arrondissement");
-		Arrondissement.add("13ème arrondissement");
-		Arrondissement.add("14ème arrondissement");
-		Arrondissement.add("15ème arrondissement");
-		Arrondissement.add("16ème arrondissement");
-		Arrondissement.add("17ème arrondissement");
-		Arrondissement.add("18ème arrondissement");
-		Arrondissement.add("19ème arrondissement");
-		Arrondissement.add("20ème arrondissement");
+		Arrondissement.add("2eme arrondissement");
+		Arrondissement.add("3eme arrondissement");
+		Arrondissement.add("4eme arrondissement");
+		Arrondissement.add("5eme arrondissement");
+		Arrondissement.add("6eme arrondissement");
+		Arrondissement.add("7eme arrondissement");
+		Arrondissement.add("8eme arrondissement");
+		Arrondissement.add("9eme arrondissement");
+		Arrondissement.add("10eme arrondissement");
+		Arrondissement.add("11eme arrondissement");
+		Arrondissement.add("12eme arrondissement");
+		Arrondissement.add("13eme arrondissement");
+		Arrondissement.add("14eme arrondissement");
+		Arrondissement.add("15eme arrondissement");
+		Arrondissement.add("16eme arrondissement");
+		Arrondissement.add("17eme arrondissement");
+		Arrondissement.add("18eme arrondissement");
+		Arrondissement.add("19eme arrondissement");
+		Arrondissement.add("20eme arrondissement");
 		
 		ArrayAdapter<String> dataAdapterArrondissement = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, Arrondissement);
 		dataAdapterArrondissement.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		pArrondissement.setAdapter(dataAdapterArrondissement);
-
-		List<String> Prof = new ArrayList<String>();
-		Prof.add("Oui");
-		Prof.add("Non");
-		ArrayAdapter<String> dataAdapterProf = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item, Prof);
-		dataAdapterProf.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-		pProf.setAdapter(dataAdapterProf);
 		
 		ReInitialiser();
 
@@ -166,24 +156,32 @@ public class ProfileActivity extends DashboardActivity
 
 	}
 	private void ReInitialiser() {
-		pPassword.setText(Profile.password);
 		//pArrondissement.set(Profile.adresse);
+	
+		pNom.setText(Profile.nom);
+		pPrenom.setText(Profile.prenom);
+		pEmail.setText(Profile.email);
 		pTelephone.setText(Profile.numTel);
-		//pProf
+		pArrondissement.setSelection(getPosition(Arrondissement,Profile.adresse));
+	}
+	
+	public int getPosition(List<String> list,String arrondisselent){
+		
+		for(int i=0;i<list.size();i++){
+			if(arrondisselent.equals(list.get(i)))
+				return i;
+		}
+		return 0;
 	}
 
 	private void RecupererLesChamps() {
-		Password 		= pPassword.getText().toString(); 
-		Telephone		= pTelephone.getText().toString();
-
-		// Email 		= pEmail.getText().toString();
-		//Password 	= pPassword.getText().toString();
-		//PasswordC 	= pPasswordC.getText().toString();
+		Telephone = pTelephone.getText().toString();
+		Arr 	  = pArrondissement.getSelectedItem().toString();
+		System.out.println("aaaaaaaaaaaaaaaaaaaarrrrrrr"+Arr); 
 	}
 
 	boolean  SaisieIsValidated() {
-		if(Nom.equals("") || Prenom.equals("")) 
-			//	|| Email.equals("")	|| Password.equals("") || PasswordC.equals("") ) 
+		if(Telephone.equals("")) 
 		{
 			toast("Veuillez remplire tout les champs !");
 			return false ;
@@ -217,8 +215,8 @@ public class ProfileActivity extends DashboardActivity
 			// Building Parameters
 			List<NameValuePair> params = new ArrayList<NameValuePair>();
 			params.add(new BasicNameValuePair(TAG_IDM, AuthentificationActivity.idUser));
-			params.add(new BasicNameValuePair(TAG_NOM, Nom));
-			params.add(new BasicNameValuePair(TAG_PRENOM, Prenom));
+			params.add(new BasicNameValuePair(TAG_ARR, Arr));
+			params.add(new BasicNameValuePair(TAG_TELEPHONE, Telephone));
 
 			//params.add(new BasicNameValuePair(TAG_EMAIL, Email));
 			//	params.add(new BasicNameValuePair(TAG_PASSWORD, Password));
@@ -236,7 +234,7 @@ public class ProfileActivity extends DashboardActivity
 				if (success == 1) {
 					// successfully updated member
 					//toast(json.getString(TAG_MESSAGE));
-					Profile.maj_profile (Nom, Prenom);
+					Profile.maj_profile(Telephone, Arr);
 					Intent i = new Intent(getApplicationContext(), HomeActivity.class);
 					startActivity(i);
 					finish();
