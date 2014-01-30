@@ -14,7 +14,11 @@
 
         <ImageView style="@style/TitleBarSeparator" />
 
-        <TextView style="@style/TitleBarText" />
+        <TextView style="@style/TitleBarText" 
+            android:text="Profile"
+            android:layout_marginLeft="70dp"
+            />
+            />
 
         <ImageButton
             style="@style/TitleBarAction"
@@ -62,8 +66,8 @@
                         android:layout_weight="1"
                         android:padding="10dp"
                         android:text="Votre profil"
-                        android:textColor="#AAEEFF"
-                        android:textSize="10pt" />
+                        android:textColor="#ff355689"
+                        android:textSize="13pt" />
                 </TableRow>
 
                 <TableRow
@@ -71,11 +75,13 @@
                     android:layout_height="fill_parent" >
 
                     <TextView
-                        android:layout_width="70dp"
-                        android:layout_height="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginRight="60dp"
                         android:padding="0dp"
-                        android:text="Password" />
+                        android:text="Password"
+                        android:textColor="#ff355689"
+                        android:textSize="8pt" />
 
                     <EditText
                         android:id="@+id/profilePassword"
@@ -96,10 +102,12 @@
                         android:layout_height="wrap_content" >
 
                         <TextView
-                            android:layout_width="70dp"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="60dp"
                             android:padding="5dp"
+                            android:textColor="#ff355689"
+                        	android:textSize="8pt"
                             android:text="Arrondissement" />
                     </LinearLayout>
 
@@ -115,10 +123,12 @@
                     android:layout_height="fill_parent" >
 
                     <TextView
-                        android:layout_width="70dp"
-                        android:layout_height="20dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
                         android:layout_marginRight="60dp"
                         android:padding="0dp"
+                        android:textColor="#ff355689"
+                        android:textSize="8pt"
                         android:text="@string/Telephone" />
 
                     <EditText
@@ -144,6 +154,8 @@
                             android:layout_height="wrap_content"
                             android:layout_marginRight="20dp"
                             android:padding="5dp"
+                            android:textColor="#ff355689"
+                        	android:textSize="8pt"
                             android:text="Etes vous un professionnel ?" />
                     </LinearLayout>
 
