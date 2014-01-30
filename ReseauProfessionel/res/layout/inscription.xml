@@ -4,6 +4,34 @@
     android:layout_height="wrap_content"
     android:orientation="vertical" >
 
+     <LinearLayout style="@style/TitleBar" >
+
+        <ImageButton
+            style="@style/TitleBarAction"
+            android:contentDescription="@string/description_retourne"
+            android:onClick="onClickRetourne"
+            android:src="@drawable/title_retourne" />
+
+        <ImageView style="@style/TitleBarSeparator" />
+
+        <TextView style="@style/TitleBarText" 
+            android:text="Insription"
+            android:layout_marginLeft="70dp"
+            />
+
+        <ImageButton
+            style="@style/TitleBarAction"
+            android:contentDescription="@string/description_about"
+            android:onClick="onClickAbout"
+            android:src="@drawable/title_about" />
+
+        <!-- <ImageButton
+            style="@style/TitleBarAction"
+            android:contentDescription="@string/description_search"
+            android:onClick="onClickSearch"
+            android:src="@drawable/title_search" /> -->
+    </LinearLayout>
+    
     <ScrollView
         android:id="@+id/scrollView1"
         android:layout_width="wrap_content"
@@ -37,7 +65,7 @@
                         android:layout_weight="1"
                         android:padding="10dp"
                         android:text="@string/Inscription"
-                        android:textColor="#AAEEFF"
+                        android:textColor="#ff355689"
                         android:textSize="10pt" />
                 </TableRow>
 
