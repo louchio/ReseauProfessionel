@@ -19,6 +19,8 @@ package com.reseauprofessionel.gestAnnonces;
 import java.util.ArrayList;
 
 
+
+
 import android.view.View;
 import android.widget.Spinner;
 
@@ -44,6 +46,7 @@ import android.widget.ListAdapter;
 import android.widget.RadioGroup;
 import android.widget.SimpleAdapter;
 import android.widget.SpinnerAdapter;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.AdapterView.OnItemSelectedListener;
 
@@ -93,6 +96,7 @@ public class GestAnnoncesActivity extends DashboardActivity { //DashboardListAct
 	EditText ETTitreAnnonce ;
 	EditText ETTextAnnonce ;
 	Spinner SpinnerProf;
+	TextView TMetier;
 	Button PublierButton;
 	RadioGroup groupRadioUser;
 	
@@ -113,6 +117,7 @@ protected void onCreate(Bundle savedInstanceState)
     professionsArrayList = new ArrayList<HashMap<String,String>>();
     
     spinnerProf = (Spinner) findViewById(R.id.spinnerMetier);
+    TMetier = (TextView) findViewById(R.id.CMetier);
     PublierButton = (Button) findViewById(R.id.PublierButton);
     groupRadioUser = (RadioGroup) findViewById(R.id.groupTypeUser);
     ETTitreAnnonce		= (EditText) findViewById(R.id.titre_Annonce) ;
@@ -131,6 +136,17 @@ protected void onCreate(Bundle savedInstanceState)
 	}) ;
     
     groupRadioUser.setVisibility(View.INVISIBLE);
+    
+    if(Profile.estProfessionnel.equals("Oui")){
+		System.out.println("Est un professionel");
+		SpinnerProf.setVisibility(View.INVISIBLE);
+		TMetier.setVisibility(View.INVISIBLE);
+	}
+    else if (Profile.estProfessionnel.equals("Non")){
+    	System.out.println("n'Est pas un professionel");
+    	SpinnerProf.setVisibility(View.VISIBLE);	
+    	TMetier.setVisibility(View.VISIBLE);
+    }
 
     new listeProfessions().execute();
 }
@@ -192,6 +208,9 @@ class NouvelleAnnonce extends AsyncTask<String, String, String> {
 		params.add(new BasicNameValuePair(TAG_TexteAnnonce, TexteAnnonce));
 		params.add(new BasicNameValuePair(TAG_IDUTILISATEUR, idUtilisateur));*/
 		
+		if(Profile.estProfessionnel.equals("Oui")){
+			idProfession = Profile.idProfession;
+		}
 		params.add(new BasicNameValuePair(TAG_TITREANNONCE, TitreAnnonce));
 		params.add(new BasicNameValuePair(TAG_TexteAnnonce, TexteAnnonce));
 		params.add(new BasicNameValuePair(TAG_IDUTILISATEUR, GestAnnoncesActivity.idUser));
