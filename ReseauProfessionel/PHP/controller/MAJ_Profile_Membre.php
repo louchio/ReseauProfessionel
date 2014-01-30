@@ -9,15 +9,16 @@
 $response = array();
 
 // check for required fields
-if (isset($_POST['nom']) && isset($_POST['prenom']))
-// && isset($_POST['password']) 
- {
-    $id = $_POST['idMembres'];
-    $nom = $_POST['nom'];
-    $prenom = $_POST['prenom'];
-	
-//    $password = $_POST['password'];
-	
+if (isset($_POST['idUtilisateur']) && isset($_POST['telephone']) && isset($_POST['arr'])) {
+
+    $id = $_POST['idUtilisateur'];
+    $arr = $_POST['arr'];
+	$telephone = $_POST['telephone'];
+	/*
+	if ($_POST['isProf'] == "Oui") $isProf = 1;
+	else $isProf = 0;
+	*/
+		
 		// include db connect class
 		require_once 'connexion.php';
 
@@ -25,7 +26,8 @@ if (isset($_POST['nom']) && isset($_POST['prenom']))
 		$conexion = new connexion();
 
      	// mysql inserting a new row
-		$result = mysql_query("UPDATE membres SET nom = '$nom', prenom = '$prenom' WHERE idMembres = '$id';");
+		$req = "UPDATE membres SET arrondissement = '$arr', numTel= '$telephone' WHERE idUtilisateur = '$id';" ;
+		$result = mysql_query($req);
 
 		// check if row inserted or not
 		if ($result) {
@@ -38,6 +40,7 @@ if (isset($_POST['nom']) && isset($_POST['prenom']))
 		} else {
 			// failed to update row
 			$response["success"] = 0;
+			//$response["message"] = $req;
 			$response["message"] = "Oops! An error occurred.";
 			
 			// echoing JSON response

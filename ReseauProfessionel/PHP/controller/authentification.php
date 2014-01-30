@@ -21,10 +21,9 @@ if(isset($_POST['email']) && isset($_POST['password'])) {
 			$user['nom'] = $row['nom'];
 			$user['prenom'] = $row['prenom'];
 			$user['numTel'] = $row['numTel'];
-			$user['adresse'] = $row['adresse'];
+			$user['adresse'] = $row['arrondissement'];
 			$user['email'] = $row['email'];
 			$user['estProfessionnel'] = $row['estProfessionnel'];
-			$user['login'] = $row['login'];
 			$user['password'] = $row['password'];
 			$user['idProfession'] = $row['idProfession'];
 			

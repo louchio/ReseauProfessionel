@@ -11,18 +11,24 @@ $response = array();
 // check for required fields
 if (isset($_POST['civilite']) && isset($_POST['nom']) && isset($_POST['prenom']) && isset($_POST['email']) 
 	&& isset($_POST['password']) && isset($_POST['telephone']) && isset($_POST['arr'])
-	&& isset($_POST['isProf'])
+	&& isset($_POST['isProf']) && isset($_POST['idProfession'])
 	) {
 	
-	//$civilite = $_POST['civilite'];
+	$civilite = $_POST['civilite'];
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
 	$email = $_POST['email'];
     $password = $_POST['password'];
+	$passwordHashe = sha1($password);
 	$arr = $_POST['arr'];
 	$telephone = $_POST['telephone'];
+	
+	$isProf = $_POST['isProf'];
+	/*
 	if ($_POST['isProf'] == "Oui") $isProf = 1;
 	else $isProf = 0;
+	*/
+	$idProfession = $_POST['idProfession'];	
 	
 		// include db connect class
 		require_once 'connexion.php';
@@ -32,7 +38,7 @@ if (isset($_POST['civilite']) && isset($_POST['nom']) && isset($_POST['prenom'])
 
      	// mysql inserting a new row
 		//$result = mysql_query("INSERT INTO membres(email, password, nom, prenom) VALUES('$email', '$password', '$nom', '$prenom') ;");
-		$req =  "INSERT INTO membres(nom, prenom, numTel, email, password, estProfessionnel) VALUES('$nom', '$prenom', '$telephone', '$email', '$password', '$isProf') ;";
+		$req =  "INSERT INTO membres(civilite, nom, prenom, numTel, email, password, arrondissement, estProfessionnel, idProfession) VALUES('$civilite', '$nom', '$prenom', '$telephone', '$email', '$passwordHashe', '$arr', '$isProf', '$idProfession') ;";
 		$result = mysql_query($req);
 			
 		// check if row inserted or not

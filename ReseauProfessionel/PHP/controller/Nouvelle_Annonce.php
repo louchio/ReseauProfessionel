@@ -14,6 +14,8 @@ if (isset($_POST['titreAnnonce']) && isset($_POST['texteAnnonce']) && isset($_PO
 	$titreAnnonce = $_POST['titreAnnonce'];
     $texteAnnonce = $_POST['texteAnnonce'];
     $idUtilisateur = $_POST['idUtilisateur'];
+    $idProfession = $_POST['idProfession'];
+    $destination = $_POST['destination'];
 	
 		// include db connect class
 		require_once 'connexion.php';
@@ -22,7 +24,7 @@ if (isset($_POST['titreAnnonce']) && isset($_POST['texteAnnonce']) && isset($_PO
 		$conexion = new connexion();
 
      	// mysql inserting a new row
-		$result = mysql_query("INSERT INTO annonce(titreAnnonce,textAnnonce,idUtilisateur) VALUES('$titreAnnonce', '$texteAnnonce', $idUtilisateur) ;");
+		$result = mysql_query("INSERT INTO annonce(titreAnnonce,textAnnonce,idUtilisateur,idProfession,destination) VALUES('$titreAnnonce', '$texteAnnonce', $idUtilisateur,$idProfession,$destination) ;");
 
 		// check if row inserted or not
 		if ($result) {

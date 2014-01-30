@@ -1,11 +1,11 @@
-		-- phpMyAdmin SQL Dump
+-- phpMyAdmin SQL Dump
 -- version 3.5.8.1
 -- http://www.phpmyadmin.net
 --
--- Client: 127.0.0.1
--- Généré le: Dim 26 Janvier 2014 à 10:49
--- Version du serveur: 5.6.10
--- Version de PHP: 5.4.14
+-- Host: 127.0.0.1
+-- Generation Time: Jan 29, 2014 at 08:45 AM
+-- Server version: 5.6.10
+-- PHP Version: 5.4.14
 
 SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8 */;
 
 --
--- Base de données: `reseauprofessionnel`
+-- Database: `reseauprofessionnel`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `amis`
+-- Table structure for table `amis`
 --
 
 CREATE TABLE IF NOT EXISTS `amis` (
@@ -34,7 +34,7 @@ CREATE TABLE IF NOT EXISTS `amis` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Contenu de la table `amis`
+-- Dumping data for table `amis`
 --
 
 INSERT INTO `amis` (`idAmis`, `Membres_idMembres`) VALUES
@@ -44,7 +44,7 @@ INSERT INTO `amis` (`idAmis`, `Membres_idMembres`) VALUES
 -- --------------------------------------------------------
 
 --
--- Structure de la table `annonce`
+-- Table structure for table `annonce`
 --
 
 CREATE TABLE IF NOT EXISTS `annonce` (
@@ -52,22 +52,28 @@ CREATE TABLE IF NOT EXISTS `annonce` (
   `titreAnnonce` varchar(45) DEFAULT NULL,
   `textAnnonce` varchar(45) DEFAULT NULL,
   `idUtilisateur` int(11) NOT NULL,
+  `idProfession` int(11) NOT NULL,
+  `destination` int(11) NOT NULL,
   PRIMARY KEY (`idannonce`),
   UNIQUE KEY `idannonce_UNIQUE` (`idannonce`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
--- Contenu de la table `annonce`
+-- Dumping data for table `annonce`
 --
 
-INSERT INTO `annonce` (`idannonce`, `titreAnnonce`, `textAnnonce`, `idUtilisateur`) VALUES
-(1, 'location du  materiel', 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbssssbbb', 1),
-(2, 'location de voiture', 'jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj', 1);
+INSERT INTO `annonce` (`idannonce`, `titreAnnonce`, `textAnnonce`, `idUtilisateur`, `idProfession`, `destination`) VALUES
+(1, 'location du  materiel', 'bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbssssbbb', 1, 0, 0),
+(2, 'location de voiture', 'jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj', 1, 0, 0),
+(3, '"mmmmm"', '"ddddd"', 2, 1, 0),
+(4, 'TitreAnnonce2', 'TexteAnnonce2', 2, 3, 0),
+(5, 'TitreAnnonce3jj', 'TexteAnnonce3', 2, 1, 1),
+(6, 'TitreAnnoncea6', 'TexteAnnonce4', 2, 7, 1);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `demandes`
+-- Table structure for table `demandes`
 --
 
 CREATE TABLE IF NOT EXISTS `demandes` (
@@ -81,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `demandes` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `lieuxfavoris`
+-- Table structure for table `lieuxfavoris`
 --
 
 CREATE TABLE IF NOT EXISTS `lieuxfavoris` (
@@ -97,7 +103,7 @@ CREATE TABLE IF NOT EXISTS `lieuxfavoris` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `markers`
+-- Table structure for table `markers`
 --
 
 CREATE TABLE IF NOT EXISTS `markers` (
@@ -114,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `markers` (
 -- --------------------------------------------------------
 
 --
--- Structure de la table `membres`
+-- Table structure for table `membres`
 --
 
 CREATE TABLE IF NOT EXISTS `membres` (
@@ -122,29 +128,30 @@ CREATE TABLE IF NOT EXISTS `membres` (
   `nom` varchar(10) DEFAULT NULL,
   `prenom` varchar(10) DEFAULT NULL,
   `numTel` varchar(45) DEFAULT NULL,
-  `adresse` varchar(45) DEFAULT NULL,
+  `arrondissement` int(11) DEFAULT NULL,
   `email` varchar(45) DEFAULT NULL,
   `estProfessionnel` varchar(45) DEFAULT NULL,
   `login` varchar(45) DEFAULT NULL,
   `password` varchar(45) DEFAULT NULL,
   `idProfession` int(11) NOT NULL,
   PRIMARY KEY (`idUtilisateur`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
--- Contenu de la table `membres`
+-- Dumping data for table `membres`
 --
 
-INSERT INTO `membres` (`idUtilisateur`, `nom`, `prenom`, `numTel`, `adresse`, `email`, `estProfessionnel`, `login`, `password`, `idProfession`) VALUES
-(1, 'khabali', 'anas', '0111', 'marseille', 'anas@gmail.com', '1', 'anassLog', 'anas', 1),
-(2, 'elouardi', 'hassan', NULL, NULL, 'hassan@yahoo.fr', '0', 'hassanLog', 'hassan', 2),
-(3, 'elyamouni', 'adil', NULL, NULL, 'adil@gmail.com', '1', 'adilLog', 'adil', 2),
-(4, 'laaz', 'naziha', NULL, NULL, 'naziha@gmail.com', '1', 'nazihaLog', 'naziha', 1);
+INSERT INTO `membres` (`idUtilisateur`, `nom`, `prenom`, `numTel`, `arrondissement`, `email`, `estProfessionnel`, `login`, `password`, `idProfession`) VALUES
+(1, 'khabali', 'anas', '0111', 1, 'anas@gmail.com', '1', 'anassLog', 'anas', 1),
+(2, 'elouardi', 'hassan', '01111', 12, 'hassan@yahoo.fr', '0', 'hassanLog', 'hassan', 2),
+(3, 'elyamouni', 'adil', NULL, 21, 'adil@gmail.com', '1', 'adilLog', 'adil', 2),
+(4, 'laaz', 'naziha', NULL, 10, 'naziha@gmail.com', '1', 'nazihaLog', 'naziha', 1),
+(5, 'yassin', 'sssss', '0212', 14, 'nnnnn@hotmail.com', '0', 'aaaa', 'aaaa', 3);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `profession`
+-- Table structure for table `profession`
 --
 
 CREATE TABLE IF NOT EXISTS `profession` (
@@ -155,7 +162,7 @@ CREATE TABLE IF NOT EXISTS `profession` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
 
 --
--- Contenu de la table `profession`
+-- Dumping data for table `profession`
 --
 
 INSERT INTO `profession` (`idprofession`, `nom`) VALUES
