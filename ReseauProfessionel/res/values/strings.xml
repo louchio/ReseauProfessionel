@@ -34,11 +34,12 @@
     <string name="title_home">Home</string>
     <string name="title_search">Search</string>
     <string name="description_delete">delete</string>
-    <string name="title_profile">Profile</string>
-    <string name="title_request">Request</string>
+    <string name="description_retourne">retourne</string>
+    <string name="title_profile">Profil</string>
+    <string name="title_request">Rechercher une annonce</string>
     <string name="title_friends">Friends</string>
-    <string name="title_annonce">Gérer les annonces</string>
-    <string name="title_you">Your Location</string>
+    <string name="title_annonce">Créer une annonce</string>
+    <string name="title_you">Modifier/supprimer ses annonces</string>
     <string name="title_setting">Setting</string>
 
     <string name="default_intro">This is the default content view for an activity. Be sure to change your activity\'s onCreate method. Use setContentView on a custom layout.</string>
