@@ -95,7 +95,6 @@ public class GestAnnoncesActivity extends DashboardActivity { //DashboardListAct
 		
 	EditText ETTitreAnnonce ;
 	EditText ETTextAnnonce ;
-	Spinner SpinnerProf;
 	TextView TMetier;
 	Button PublierButton;
 	RadioGroup groupRadioUser;
@@ -103,7 +102,7 @@ public class GestAnnoncesActivity extends DashboardActivity { //DashboardListAct
 	private String TitreAnnonce = null ; 
 	private String TexteAnnonce = null ; 
 	private String idUtilisateur = "0";
-	private String idProfession = null;
+	private String idProfession = "1";
 	private String destination = "0";
 	
 	
@@ -139,12 +138,12 @@ protected void onCreate(Bundle savedInstanceState)
     
     if(Profile.estProfessionnel.equals("Oui")){
 		System.out.println("Est un professionel");
-		SpinnerProf.setVisibility(View.INVISIBLE);
+		spinnerProf.setVisibility(View.INVISIBLE);
 		TMetier.setVisibility(View.INVISIBLE);
 	}
     else if (Profile.estProfessionnel.equals("Non")){
     	System.out.println("n'Est pas un professionel");
-    	SpinnerProf.setVisibility(View.VISIBLE);	
+    	spinnerProf.setVisibility(View.VISIBLE);	
     	TMetier.setVisibility(View.VISIBLE);
     }
 
@@ -210,6 +209,7 @@ class NouvelleAnnonce extends AsyncTask<String, String, String> {
 		
 		if(Profile.estProfessionnel.equals("Oui")){
 			idProfession = Profile.idProfession;
+			System.out.println("Id TESSSSSSSSt = "+idProfession);
 		}
 		params.add(new BasicNameValuePair(TAG_TITREANNONCE, TitreAnnonce));
 		params.add(new BasicNameValuePair(TAG_TexteAnnonce, TexteAnnonce));
